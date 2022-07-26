@@ -17,6 +17,8 @@
 		7FE9B611288FB395000C3CBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B610288FB395000C3CBC /* LoginViewController.swift */; };
 		7FE9B613288FB3AC000C3CBC /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B612288FB3AC000C3CBC /* StopWatchViewController.swift */; };
 		7FE9B61E288FB4BA000C3CBC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B61D288FB4BA000C3CBC /* SettingViewController.swift */; };
+		7FE9B620288FC03B000C3CBC /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B61F288FC03B000C3CBC /* LoginRouter.swift */; };
+		7FE9B622288FC751000C3CBC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B621288FC751000C3CBC /* TabBarController.swift */; };
 		97D75EB98331C61B5DE0A734 /* Pods_StopWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29687B9AD4C8316B1EF161D /* Pods_StopWatch.framework */; };
 		B83B4BC86283BDF7801DBCB5 /* Pods_StopWatch_StopWatchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B893A595149614E01E744DC8 /* Pods_StopWatch_StopWatchUITests.framework */; };
 		D13E3D154108A24D6FCE507E /* Pods_StopWatchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B50495E1D5F8E3E87B3A8E3 /* Pods_StopWatchTests.framework */; };
@@ -57,6 +59,8 @@
 		7FE9B610288FB395000C3CBC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7FE9B612288FB3AC000C3CBC /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
 		7FE9B61D288FB4BA000C3CBC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		7FE9B61F288FC03B000C3CBC /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		7FE9B621288FC751000C3CBC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		9181645B96AC420853740F0E /* Pods-StopWatchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StopWatchTests.debug.xcconfig"; path = "Target Support Files/Pods-StopWatchTests/Pods-StopWatchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E7923B023202C991EE95062 /* Pods-StopWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StopWatch.release.xcconfig"; path = "Target Support Files/Pods-StopWatch/Pods-StopWatch.release.xcconfig"; sourceTree = "<group>"; };
 		B893A595149614E01E744DC8 /* Pods_StopWatch_StopWatchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopWatch_StopWatchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				7FE9B610288FB395000C3CBC /* LoginViewController.swift */,
+				7FE9B61F288FC03B000C3CBC /* LoginRouter.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 				7FE9B616288FB3C6000C3CBC /* Login */,
 				7FE9B617288FB3CD000C3CBC /* StopWatch */,
 				7FE9B618288FB3D7000C3CBC /* Setting */,
+				7FE9B621288FC751000C3CBC /* TabBarController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -491,7 +497,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FE9B61E288FB4BA000C3CBC /* SettingViewController.swift in Sources */,
+				7FE9B622288FC751000C3CBC /* TabBarController.swift in Sources */,
 				7FE9B613288FB3AC000C3CBC /* StopWatchViewController.swift in Sources */,
+				7FE9B620288FC03B000C3CBC /* LoginRouter.swift in Sources */,
 				7FE9B611288FB395000C3CBC /* LoginViewController.swift in Sources */,
 				7FE9B5E1288FB0A2000C3CBC /* AppDelegate.swift in Sources */,
 				7FE9B5E3288FB0A2000C3CBC /* SceneDelegate.swift in Sources */,

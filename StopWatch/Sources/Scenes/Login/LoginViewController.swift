@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class LoginViewController: UIViewController {
 
+    var router: LoginRouterLogic?
+    private var disposeBag = DisposeBag()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Stop Watch"
@@ -28,10 +33,12 @@ final class LoginViewController: UIViewController {
     //MARK: - Life cycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setupViewController()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setupViewController()
     }
     
     override func loadView() {
@@ -44,10 +51,18 @@ final class LoginViewController: UIViewController {
         setupUIComponents()
     }
     
+    private func setupViewController() {
+        let viewController = self
+        let router = LoginRouter()
+        router.viewController = viewController
+        viewController.router = router
+    }
+    
     private func setupUIComponents() {
         view.addSubview(titleLabel)
         view.addSubview(loginButton)
         setupLayoutConstraint()
+        setupBinding()
     }
     
     private func setupLayoutConstraint() {
@@ -57,6 +72,14 @@ final class LoginViewController: UIViewController {
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30)
         ])
+    }
+    
+    private func setupBinding() {
+        loginButton.rx.tap
+            .bind { [weak self] in
+                self?.router?.showLoginSuccess()
+            }
+            .disposed(by: disposeBag)
     }
     
 }
