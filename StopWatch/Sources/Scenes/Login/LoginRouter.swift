@@ -32,8 +32,9 @@ final class LoginRouter: LoginRouterLogic {
     
     func showLoginSuccess() {
         let destinationViewController = UITabBarController()
+        destinationViewController.tabBar.tintColor = UIColor(red: 149/255, green: 189/255, blue: 250/255, alpha: 1)
         destinationViewController.viewControllers = [firstTabViewController, secondTabViewController]
-        destinationViewController.modalPresentationStyle = .currentContext
+        destinationViewController.modalPresentationStyle = .fullScreen
         viewController?.present(destinationViewController, animated: true)
     }
     
