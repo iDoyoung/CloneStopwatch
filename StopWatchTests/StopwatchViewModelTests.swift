@@ -33,4 +33,13 @@ class StopwatchViewModelTests: XCTestCase {
         //then
         XCTAssert(!sut.timer.isCancelled)
     }
+    
+    func test_stopTimer_TimerShouldBeCancelld() {
+        //given
+        sut.startTimer()
+        //when
+        sut.stopTimer()
+        //then
+        XCTAssert(sut.timer.isCancelled)
+    }
 }

@@ -27,6 +27,7 @@ class StopwatchViewModel: StopwatchViewModelInput {
     }
     
     func stopTimer() {
+        timer.cancel()
     }
     
     func resetTimer() {
