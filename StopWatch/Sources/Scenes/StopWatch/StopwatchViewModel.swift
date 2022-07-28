@@ -24,39 +24,41 @@ class StopwatchViewModel: StopwatchViewModelInput {
     
     var timerStatus = PublishSubject<TimerStatus>()
     
-    var mainTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
-    var lapTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+    var mainTimer: DispatchSourceTimer?
+    var lapTimer: DispatchSourceTimer?
     
     //TODO: Add Oberservable timer
     
     func startTimer() {
         timerStatus.onNext(.counting)
-        mainTimer.schedule(deadline: .now(), repeating: 0.01)
-        lapTimer.schedule(deadline: .now(), repeating: 0.01)
-        mainTimer.resume()
-        lapTimer.resume()
+        mainTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+        lapTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+        mainTimer?.schedule(deadline: .now(), repeating: 0.01)
+        lapTimer?.schedule(deadline: .now(), repeating: 0.01)
+        mainTimer?.resume()
+        lapTimer?.resume()
     }
     
     func stopTimer() {
         timerStatus.onNext(.stoped)
-        mainTimer.suspend()
-        lapTimer.suspend()
+        mainTimer?.suspend()
+        lapTimer?.suspend()
     }
     
     func restartTimer() {
         timerStatus.onNext(.counting)
-        mainTimer.resume()
-        lapTimer.resume()
+        mainTimer?.resume()
+        lapTimer?.resume()
     }
     
     func resetTimer() {
     }
     
     func lapTime() {
-        lapTimer.cancel()
+        lapTimer?.cancel()
         lapTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
-        lapTimer.schedule(deadline: .now(), repeating: 0.01)
-        lapTimer.resume()
+        lapTimer?.schedule(deadline: .now(), repeating: 0.01)
+        lapTimer?.resume()
     }
     
     //TODO: Output

@@ -30,12 +30,18 @@ class StopwatchViewModelTests: XCTestCase {
     //MARK: - Test doubles
 
     //MARK: - Tests
-    func test_startTimer_timerShouldBeNotCancelled() {
+    func test_startTimer_mainTimerAndLaptimerShouldBeNotCancelled() {
         //given
         //when
         sut.startTimer()
         //then
-        XCTAssert(!sut.mainTimer.isCancelled)
+        guard let mainTimer = sut.mainTimer,
+              let lapTimer = sut.lapTimer else {
+            XCTFail()
+            return
+        }
+        XCTAssert(!mainTimer.isCancelled)
+        XCTAssert(!lapTimer.isCancelled)
     }
     
     func test_stopTimer_timerShouldBeCancelld() {
@@ -57,7 +63,13 @@ class StopwatchViewModelTests: XCTestCase {
         //when
         sut.restartTimer()
         //then
-        XCTAssert(!sut.mainTimer.isCancelled)
+        guard let mainTimer = sut.mainTimer,
+              let lapTimer = sut.lapTimer else {
+            XCTFail()
+            return
+        }
+        XCTAssert(!mainTimer.isCancelled)
+        XCTAssert(!lapTimer.isCancelled)
     }
     
     func test_lapTime_lapTimerShouldBeNotCancelled() {
@@ -66,7 +78,8 @@ class StopwatchViewModelTests: XCTestCase {
         //when
         sut.lapTime()
         //then
-        XCTAssert(!sut.lapTimer.isCancelled)
+        guard let lapTimer = sut.lapTimer else { return }
+        XCTAssert(!lapTimer.isCancelled)
     }
     
 }
