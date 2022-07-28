@@ -6,6 +6,10 @@
 //
 
 import XCTest
+import RxSwift
+import RxTest
+import RxBlocking
+
 @testable import StopWatch
 
 class StopwatchViewModelTests: XCTestCase {
@@ -26,7 +30,7 @@ class StopwatchViewModelTests: XCTestCase {
     //MARK: - Test doubles
 
     //MARK: - Tests
-    func test_startTimer_TimerShouldBeNotCancelled() {
+    func test_startTimer_timerShouldBeNotCancelled() {
         //given
         //when
         sut.startTimer()
@@ -34,12 +38,26 @@ class StopwatchViewModelTests: XCTestCase {
         XCTAssert(!sut.timer.isCancelled)
     }
     
-    func test_stopTimer_TimerShouldBeCancelld() {
+    func test_stopTimer_timerShouldBeCancelld() {
         //given
+        let expectation = TimerStatus.stoped
         sut.startTimer()
         //when
         sut.stopTimer()
         //then
-        XCTAssert(sut.timer.isCancelled)
+        let result = try? sut.timerStatus.toBlocking(timeout: 1).first()
+        XCTAssertEqual(result, expectation)
+        sut.timer.resume()
     }
+    
+    func test_restart_Timer_timerShouldBeNotCanncelled() {
+        //given
+        sut.startTimer()
+        sut.stopTimer()
+        //when
+        sut.restartTimer()
+        //then
+        XCTAssert(!sut.timer.isCancelled)
+    }
+    
 }

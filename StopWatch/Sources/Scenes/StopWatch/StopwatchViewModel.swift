@@ -14,7 +14,15 @@ protocol StopwatchViewModelInput {
     func lapTime()
 }
 
+enum TimerStatus {
+    case initialized
+    case counting
+    case stoped
+}
+
 class StopwatchViewModel: StopwatchViewModelInput {
+    
+    var timerStatus = PublishSubject<TimerStatus>()
     
     var timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
     //TODO: Add Lab timer
@@ -22,12 +30,19 @@ class StopwatchViewModel: StopwatchViewModelInput {
     //TODO: Add Oberservable timer
     
     func startTimer() {
+        timerStatus.onNext(.counting)
         timer.schedule(deadline: .now(), repeating: 0.01)
         timer.resume()
     }
     
     func stopTimer() {
-        timer.cancel()
+        timerStatus.onNext(.stoped)
+        timer.suspend()
+    }
+    
+    func restartTimer() {
+        timerStatus.onNext(.counting)
+        timer.resume()
     }
     
     func resetTimer() {
