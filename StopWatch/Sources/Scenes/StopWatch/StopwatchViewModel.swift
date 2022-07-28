@@ -52,6 +52,10 @@ class StopwatchViewModel: StopwatchViewModelInput {
     }
     
     func resetTimer() {
+        mainTimer?.cancel()
+        lapTimer?.cancel()
+        mainTimer = nil
+        lapTimer = nil
     }
     
     func lapTime() {

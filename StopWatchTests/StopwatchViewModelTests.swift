@@ -82,4 +82,13 @@ class StopwatchViewModelTests: XCTestCase {
         XCTAssert(!lapTimer.isCancelled)
     }
     
+    func test_resetTimer_mainAndLaptimerShouldBeNil() {
+        //given
+        //when
+        sut.resetTimer()
+        //then
+        XCTAssertNil(sut.mainTimer)
+        XCTAssertNil(sut.lapTimer)
+    }
+    
 }
