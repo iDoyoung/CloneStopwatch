@@ -24,31 +24,39 @@ class StopwatchViewModel: StopwatchViewModelInput {
     
     var timerStatus = PublishSubject<TimerStatus>()
     
-    var timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
-    //TODO: Add Lab timer
+    var mainTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+    var lapTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
     
     //TODO: Add Oberservable timer
     
     func startTimer() {
         timerStatus.onNext(.counting)
-        timer.schedule(deadline: .now(), repeating: 0.01)
-        timer.resume()
+        mainTimer.schedule(deadline: .now(), repeating: 0.01)
+        lapTimer.schedule(deadline: .now(), repeating: 0.01)
+        mainTimer.resume()
+        lapTimer.resume()
     }
     
     func stopTimer() {
         timerStatus.onNext(.stoped)
-        timer.suspend()
+        mainTimer.suspend()
+        lapTimer.suspend()
     }
     
     func restartTimer() {
         timerStatus.onNext(.counting)
-        timer.resume()
+        mainTimer.resume()
+        lapTimer.resume()
     }
     
     func resetTimer() {
     }
     
     func lapTime() {
+        lapTimer.cancel()
+        lapTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+        lapTimer.schedule(deadline: .now(), repeating: 0.01)
+        lapTimer.resume()
     }
     
     //TODO: Output
