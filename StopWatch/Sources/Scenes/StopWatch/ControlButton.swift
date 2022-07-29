@@ -10,8 +10,9 @@ import UIKit
 @IBDesignable
 final class ControlButton: UIButton {
     
+    var timerStatus: TimerStatus = .initialized
+    
     override func tintColorDidChange() {
-        super.tintColorDidChange()
         setTitleColor(tintColor, for: .normal)
         titleLabel?.backgroundColor = tintColor.withAlphaComponent(0.2)
     }
