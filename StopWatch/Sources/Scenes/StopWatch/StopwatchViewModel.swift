@@ -14,15 +14,20 @@ protocol StopwatchViewModelInput {
     func lapTime()
 }
 
+protocol StopwatchViewModelOutput {
+    var timerStatus: PublishSubject<TimerStatus> { get }
+    var mainTimerText: Observable<String> { get }
+    var lapTimerText: Observable<String> { get }
+}
+
 enum TimerStatus {
     case initialized
     case counting
     case stoped
 }
 
-class StopwatchViewModel: StopwatchViewModelInput {
+class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     
-    var timerStatus = PublishSubject<TimerStatus>()
     var countingMainTimes = PublishSubject<Double>()
     var countingLapTimes = PublishSubject<Double>()
     
@@ -75,7 +80,9 @@ class StopwatchViewModel: StopwatchViewModelInput {
         lapTimer?.resume()
     }
     
-    //TODO: Output
+    //MARK: - Output
+    var timerStatus = PublishSubject<TimerStatus>()
+    
     lazy var mainTimerText = countingMainTimes.map {
         //Int to Time 00:00:00
         //let time = Int($0)
