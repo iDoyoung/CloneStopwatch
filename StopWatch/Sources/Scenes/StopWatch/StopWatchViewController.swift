@@ -11,6 +11,9 @@ import RxCocoa
 
 class StopWatchViewController: UIViewController {
 
+    let viewModel = StopwatchViewModel()
+    private var disposeBag = DisposeBag()
+    
     private let timeLabel: UILabel = {
         let label = UILabel()
         label.text = "00:00.00"
@@ -55,6 +58,7 @@ class StopWatchViewController: UIViewController {
         setupUIComponents()
     }
 
+    //MARK: - Setup UI
     private func setupUIComponents() {
         view.addSubview(timeLabel)
         view.addSubview(leftButton)
@@ -84,4 +88,66 @@ class StopWatchViewController: UIViewController {
         ])
     }
    
+    func observeTimerStatus() {
+        viewModel.timerStatus.subscribe { [weak self] event in
+            switch event {
+            case .next(let status):
+                self?.updateLeftButton(to: status)
+                self?.updateRightButton(to: status)
+            case .error(let error):
+                #if DEBUG
+                print("Error: \(error)")
+                #endif
+            case .completed:
+                #if DEBUG
+                print("Complete")
+                #endif
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    private func updateRightButton(to status: TimerStatus) {
+        switch status {
+        case .initialized:
+            rightButton.tintColor = .systemGreen
+            rightButton.setTitle("시작", for: .normal)
+        case .counting:
+            rightButton.tintColor = .systemRed
+            rightButton.setTitle("중단", for: .normal)
+        case .stoped:
+            rightButton.tintColor = .systemGreen
+            rightButton.setTitle("시작", for: .normal)
+        }
+    }
+    
+    private func updateLeftButton(to status: TimerStatus) {
+        switch status {
+        case .initialized:
+            leftButton.setTitle("랩", for: .normal)
+            leftButton.isEnabled = false
+        case .counting:
+            leftButton.setTitle("랩", for: .normal)
+            leftButton.isEnabled = true
+        case .stoped:
+            leftButton.setTitle("재설정", for: .normal)
+        }
+    }
+    
+    //MARK: - Control Action
+    @objc
+    func start() {
+    }
+    
+    @objc
+    func stop() {
+    }
+    
+    @objc
+    func lap() {
+    }
+    
+    @objc
+    func reset() {
+    }
+    
 }
