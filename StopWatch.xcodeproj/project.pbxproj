@@ -11,15 +11,15 @@
 		7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66E2890E8910036712E /* LapTableViewCell.swift */; };
 		7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6702891522F0036712E /* StopwatchViewModel.swift */; };
 		7F4BD67328915A400036712E /* StopwatchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */; };
+		7F4BD6752893A52E0036712E /* StopwatchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */; };
 		7FE9B5E1288FB0A2000C3CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B5E0288FB0A2000C3CBC /* AppDelegate.swift */; };
 		7FE9B5E3288FB0A2000C3CBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B5E2288FB0A2000C3CBC /* SceneDelegate.swift */; };
 		7FE9B5EA288FB0A3000C3CBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE9B5E9288FB0A3000C3CBC /* Assets.xcassets */; };
 		7FE9B5ED288FB0A3000C3CBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE9B5EB288FB0A3000C3CBC /* LaunchScreen.storyboard */; };
-		7FE9B5F8288FB0A3000C3CBC /* StopWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B5F7288FB0A3000C3CBC /* StopWatchTests.swift */; };
 		7FE9B602288FB0A3000C3CBC /* StopWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B601288FB0A3000C3CBC /* StopWatchUITests.swift */; };
 		7FE9B604288FB0A3000C3CBC /* StopWatchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B603288FB0A3000C3CBC /* StopWatchUITestsLaunchTests.swift */; };
 		7FE9B611288FB395000C3CBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B610288FB395000C3CBC /* LoginViewController.swift */; };
-		7FE9B613288FB3AC000C3CBC /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B612288FB3AC000C3CBC /* StopWatchViewController.swift */; };
+		7FE9B613288FB3AC000C3CBC /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B612288FB3AC000C3CBC /* StopwatchViewController.swift */; };
 		7FE9B61E288FB4BA000C3CBC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B61D288FB4BA000C3CBC /* SettingViewController.swift */; };
 		7FE9B620288FC03B000C3CBC /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B61F288FC03B000C3CBC /* LoginRouter.swift */; };
 		97D75EB98331C61B5DE0A734 /* Pods_StopWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29687B9AD4C8316B1EF161D /* Pods_StopWatch.framework */; };
@@ -52,6 +52,7 @@
 		7F4BD66E2890E8910036712E /* LapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTableViewCell.swift; sourceTree = "<group>"; };
 		7F4BD6702891522F0036712E /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
 		7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModelTests.swift; sourceTree = "<group>"; };
+		7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewControllerTests.swift; sourceTree = "<group>"; };
 		7FE9B5DD288FB0A2000C3CBC /* StopWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE9B5E0288FB0A2000C3CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FE9B5E2288FB0A2000C3CBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,12 +60,11 @@
 		7FE9B5EC288FB0A3000C3CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FE9B5EE288FB0A3000C3CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FE9B5F3288FB0A3000C3CBC /* StopWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StopWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FE9B5F7288FB0A3000C3CBC /* StopWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchTests.swift; sourceTree = "<group>"; };
 		7FE9B5FD288FB0A3000C3CBC /* StopWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StopWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE9B601288FB0A3000C3CBC /* StopWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchUITests.swift; sourceTree = "<group>"; };
 		7FE9B603288FB0A3000C3CBC /* StopWatchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7FE9B610288FB395000C3CBC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		7FE9B612288FB3AC000C3CBC /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchViewController.swift; sourceTree = "<group>"; };
+		7FE9B612288FB3AC000C3CBC /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
 		7FE9B61D288FB4BA000C3CBC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7FE9B61F288FC03B000C3CBC /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		9181645B96AC420853740F0E /* Pods-StopWatchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StopWatchTests.debug.xcconfig"; path = "Target Support Files/Pods-StopWatchTests/Pods-StopWatchTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 		7FE9B5F6288FB0A3000C3CBC /* StopWatchTests */ = {
 			isa = PBXGroup;
 			children = (
-				7FE9B5F7288FB0A3000C3CBC /* StopWatchTests.swift */,
 				7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */,
+				7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */,
 			);
 			path = StopWatchTests;
 			sourceTree = "<group>";
@@ -186,7 +186,7 @@
 			children = (
 				7F4BD66C2890245E0036712E /* ControlButton.swift */,
 				7F4BD66E2890E8910036712E /* LapTableViewCell.swift */,
-				7FE9B612288FB3AC000C3CBC /* StopWatchViewController.swift */,
+				7FE9B612288FB3AC000C3CBC /* StopwatchViewController.swift */,
 				7F4BD6702891522F0036712E /* StopwatchViewModel.swift */,
 			);
 			path = StopWatch;
@@ -508,7 +508,7 @@
 				7FE9B61E288FB4BA000C3CBC /* SettingViewController.swift in Sources */,
 				7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */,
 				7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */,
-				7FE9B613288FB3AC000C3CBC /* StopWatchViewController.swift in Sources */,
+				7FE9B613288FB3AC000C3CBC /* StopwatchViewController.swift in Sources */,
 				7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */,
 				7FE9B620288FC03B000C3CBC /* LoginRouter.swift in Sources */,
 				7FE9B611288FB395000C3CBC /* LoginViewController.swift in Sources */,
@@ -521,8 +521,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F4BD6752893A52E0036712E /* StopwatchViewControllerTests.swift in Sources */,
 				7F4BD67328915A400036712E /* StopwatchViewModelTests.swift in Sources */,
-				7FE9B5F8288FB0A3000C3CBC /* StopWatchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

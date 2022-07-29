@@ -17,7 +17,7 @@ final class LoginRouter: LoginRouterLogic {
     weak var viewController: UIViewController?
     
     private lazy var firstTabViewController: UIViewController = {
-        let viewController = StopWatchViewController()
+        let viewController = StopwatchViewController()
         let image = UIImage(systemName: "stopwatch.fill")
         viewController.tabBarItem = UITabBarItem(title: "Stopwatch", image: image, selectedImage: image)
         return viewController

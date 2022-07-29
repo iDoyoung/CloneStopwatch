@@ -9,9 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class StopWatchViewController: UIViewController {
+class StopwatchViewController: UIViewController {
 
-    let viewModel = StopwatchViewModel()
+    var viewModel: (StopwatchViewModelInput&StopwatchViewModelOutput)?
+    
     private var disposeBag = DisposeBag()
     
     private let timeLabel: UILabel = {
@@ -26,14 +27,18 @@ class StopWatchViewController: UIViewController {
     private lazy var leftButton: UIButton = {
         let button = ControlButton(type: .system)
         button.setTitle("랩", for: .normal)
+        button.setTitle("재설정", for: .selected)
+        button.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
         button.tintColor = .systemGray
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private let rightButton: UIButton = {
+    private lazy var rightButton: UIButton = {
         let button = ControlButton(type: .system)
         button.setTitle("시작", for: .normal)
+        button.setTitle("중단", for: .selected)
+        button.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
         button.tintColor = .systemGreen
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -48,6 +53,16 @@ class StopWatchViewController: UIViewController {
     }()
     
     //MARK: - Life cycle
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        viewModel = StopwatchViewModel()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        viewModel = StopwatchViewModel()
+    }
+    
     override func loadView() {
         super.loadView()
         view.backgroundColor = .systemBackground
@@ -56,6 +71,7 @@ class StopWatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIComponents()
+        observeTimerStatus()
     }
 
     //MARK: - Setup UI
@@ -89,7 +105,7 @@ class StopWatchViewController: UIViewController {
     }
    
     func observeTimerStatus() {
-        viewModel.timerStatus.subscribe { [weak self] event in
+        viewModel?.timerStatus.subscribe { [weak self] event in
             switch event {
             case .next(let status):
                 self?.updateLeftButton(to: status)
@@ -110,44 +126,54 @@ class StopWatchViewController: UIViewController {
         switch status {
         case .initialized:
             rightButton.tintColor = .systemGreen
-            rightButton.setTitle("시작", for: .normal)
+            rightButton.isSelected = false
         case .counting:
             rightButton.tintColor = .systemRed
-            rightButton.setTitle("중단", for: .normal)
+            rightButton.isSelected = false
         case .stoped:
             rightButton.tintColor = .systemGreen
-            rightButton.setTitle("시작", for: .normal)
+            rightButton.isSelected = false
         }
     }
     
     private func updateLeftButton(to status: TimerStatus) {
         switch status {
         case .initialized:
-            leftButton.setTitle("랩", for: .normal)
             leftButton.isEnabled = false
+            leftButton.isSelected = false
         case .counting:
-            leftButton.setTitle("랩", for: .normal)
             leftButton.isEnabled = true
+            leftButton.isSelected = false
         case .stoped:
-            leftButton.setTitle("재설정", for: .normal)
+            leftButton.isSelected = true
         }
     }
     
     //MARK: - Control Action
     @objc
-    func start() {
+    private func rightButtonAction(_ sender: UIButton) {
+        sender.isSelected ? startTimer() : stopTimer()
     }
     
     @objc
-    func stop() {
+    private func leftButtonAction(_ sender: UIButton) {
+        sender.isSelected ? resetTimer() : lapTime()
     }
     
-    @objc
-    func lap() {
+    func startTimer() {
+        viewModel?.startTimer()
     }
     
-    @objc
-    func reset() {
+    func stopTimer() {
+        viewModel?.stopTimer()
+    }
+    
+    func lapTime() {
+        viewModel?.lapTime()
+    }
+    
+    func resetTimer() {
+        viewModel?.resetTimer()
     }
     
 }
