@@ -23,18 +23,28 @@ enum TimerStatus {
 class StopwatchViewModel: StopwatchViewModelInput {
     
     var timerStatus = PublishSubject<TimerStatus>()
+    var countingMainTimes = PublishSubject<Double>()
+    var countingLapTimes = PublishSubject<Double>()
     
     var mainTimer: DispatchSourceTimer?
     var lapTimer: DispatchSourceTimer?
-    
-    //TODO: Add Oberservable timer
     
     func startTimer() {
         timerStatus.onNext(.counting)
         mainTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
         lapTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+        
         mainTimer?.schedule(deadline: .now(), repeating: 0.01)
         lapTimer?.schedule(deadline: .now(), repeating: 0.01)
+        
+        mainTimer?.setEventHandler { [weak self] in
+            self?.countingMainTimes.onNext(0.01)
+        }
+        
+        lapTimer?.setEventHandler { [weak self] in
+            self?.countingLapTimes.onNext(0.01)
+        }
+        
         mainTimer?.resume()
         lapTimer?.resume()
     }
@@ -66,4 +76,15 @@ class StopwatchViewModel: StopwatchViewModelInput {
     }
     
     //TODO: Output
+    lazy var mainTimerText = countingMainTimes.map {
+        //Int to Time 00:00:00
+        //let time = Int($0)
+        //밀리초 .00
+        "\($0)"
+    }
+    
+    lazy var lapTimerText = countingLapTimes.map {
+        "\($0)"
+    }
+    
 }
