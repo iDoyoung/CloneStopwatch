@@ -85,12 +85,9 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     //MARK: - Output
     var timerStatus = BehaviorSubject<TimerStatus>(value: .initialized)
     
-    lazy var mainTimerText = countingMainTimes.map {
-        //Int to Time 00:00:00
-        //let time = Int($0)
-        //밀리초 .00
-        "\($0)"
-    }
+    lazy var mainTimerText = countingMainTimes
+        .scan(0) { $0 + $1 }
+        .map { $0.toCountingTime() }
     
     lazy var lapTimerText = countingLapTimes.map {
         "\($0)"

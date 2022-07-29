@@ -68,6 +68,7 @@ class StopwatchViewController: UIViewController {
         super.viewDidLoad()
         setupUIComponents()
         observeTimerStatus()
+        setupTimerTextBinding()
     }
 
     //MARK: - Setup UI
@@ -116,6 +117,12 @@ class StopwatchViewController: UIViewController {
                 #endif
             }
         }.disposed(by: disposeBag)
+    }
+    
+    func setupTimerTextBinding() {
+        viewModel?.mainTimerText
+            .bind(to: timeLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     private func updateRightButton(to status: TimerStatus) {
