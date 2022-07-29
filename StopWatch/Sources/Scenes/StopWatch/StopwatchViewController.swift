@@ -26,9 +26,6 @@ class StopwatchViewController: UIViewController {
     
     private lazy var leftButton: UIButton = {
         let button = ControlButton(type: .system)
-        button.setTitle("랩", for: .normal)
-        button.setTitle("재설정", for: .selected)
-        button.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
         button.tintColor = .systemGray
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -36,9 +33,6 @@ class StopwatchViewController: UIViewController {
     
     private lazy var rightButton: UIButton = {
         let button = ControlButton(type: .system)
-        button.setTitle("시작", for: .normal)
-        button.setTitle("중단", for: .selected)
-        button.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
         button.tintColor = .systemGreen
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -125,53 +119,56 @@ class StopwatchViewController: UIViewController {
     private func updateRightButton(to status: TimerStatus) {
         switch status {
         case .initialized:
+            rightButton.setTitle("시작", for: .normal)
             rightButton.tintColor = .systemGreen
-            rightButton.isSelected = false
+            rightButton.addTarget(self, action: #selector(startTimer), for: .touchUpInside)
         case .counting:
+            rightButton.setTitle("중단", for: .normal)
             rightButton.tintColor = .systemRed
-            rightButton.isSelected = false
+            rightButton.addTarget(self, action: #selector(stopTimer), for: .touchUpInside)
         case .stoped:
+            rightButton.setTitle("시작", for: .normal)
             rightButton.tintColor = .systemGreen
-            rightButton.isSelected = false
+            rightButton.addTarget(self, action: #selector(startTimer), for: .touchUpInside)
         }
     }
     
     private func updateLeftButton(to status: TimerStatus) {
         switch status {
         case .initialized:
+            leftButton.setTitle("랩", for: .normal)
             leftButton.isEnabled = false
-            leftButton.isSelected = false
         case .counting:
+            leftButton.setTitle("랩", for: .normal)
             leftButton.isEnabled = true
-            leftButton.isSelected = false
+            leftButton.addTarget(self, action: #selector(lapTime), for: .touchUpInside)
         case .stoped:
-            leftButton.isSelected = true
+            leftButton.setTitle("재설정", for: .normal)
+            leftButton.addTarget(self, action: #selector(resetTimer), for: .touchUpInside)
         }
     }
     
     //MARK: - Control Action
     @objc
-    private func rightButtonAction(_ sender: UIButton) {
-        sender.isSelected ? startTimer() : stopTimer()
-    }
-    
-    @objc
-    private func leftButtonAction(_ sender: UIButton) {
-        sender.isSelected ? resetTimer() : lapTime()
-    }
-    
     func startTimer() {
         viewModel?.startTimer()
     }
     
+    @objc
     func stopTimer() {
         viewModel?.stopTimer()
     }
     
+    @objc
+    func restartTimer() {
+        viewModel?.restartTimer()
+    }
+    @objc
     func lapTime() {
         viewModel?.lapTime()
     }
     
+    @objc
     func resetTimer() {
         viewModel?.resetTimer()
     }

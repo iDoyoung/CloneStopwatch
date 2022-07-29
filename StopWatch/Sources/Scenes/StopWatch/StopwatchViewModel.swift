@@ -11,11 +11,12 @@ protocol StopwatchViewModelInput {
     func startTimer()
     func stopTimer()
     func resetTimer()
+    func restartTimer()
     func lapTime()
 }
 
 protocol StopwatchViewModelOutput {
-    var timerStatus: PublishSubject<TimerStatus> { get }
+    var timerStatus: BehaviorSubject<TimerStatus> { get }
     var mainTimerText: Observable<String> { get }
     var lapTimerText: Observable<String> { get }
 }
@@ -67,6 +68,7 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     }
     
     func resetTimer() {
+        timerStatus.onNext(.initialized)
         mainTimer?.cancel()
         lapTimer?.cancel()
         mainTimer = nil
@@ -81,7 +83,7 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     }
     
     //MARK: - Output
-    var timerStatus = PublishSubject<TimerStatus>()
+    var timerStatus = BehaviorSubject<TimerStatus>(value: .initialized)
     
     lazy var mainTimerText = countingMainTimes.map {
         //Int to Time 00:00:00

@@ -30,6 +30,7 @@ class StopwatchViewControllerTests: XCTestCase {
         
         var startTimerCalled = false
         var stopTimerCalled = false
+        var restartTimerCalled = false
         var resetTimerCalled = false
         var lapTimeCalled = false
         
@@ -41,6 +42,10 @@ class StopwatchViewControllerTests: XCTestCase {
             stopTimerCalled = true
         }
         
+        func restartTimer() {
+            restartTimerCalled = true
+        }
+        
         func resetTimer() {
             resetTimerCalled = true
         }
@@ -49,10 +54,8 @@ class StopwatchViewControllerTests: XCTestCase {
             lapTimeCalled = true
         }
         
-        var timerStatus: PublishSubject<TimerStatus> = PublishSubject<TimerStatus>()
-        
+        var timerStatus = BehaviorSubject<TimerStatus>(value: .initialized)
         var mainTimerText: Observable<String> = Observable.just("Test main time")
-        
         var lapTimerText: Observable<String> = Observable.just("Test Lap time")
         
     }
@@ -76,6 +79,16 @@ class StopwatchViewControllerTests: XCTestCase {
         sut.stopTimer()
         //then
         XCTAssert(stopwatchViewModelSpy.stopTimerCalled)
+    }
+    
+    func test_restartTimer_shouldInteractViewModelToCallRestartTimer() {
+        //given
+        let stopwatchViewModelSpy = StopwatchViewModelSpy()
+        sut.viewModel = stopwatchViewModelSpy
+        //when
+        sut.restartTimer()
+        //then
+        XCTAssert(stopwatchViewModelSpy.restartTimerCalled)
     }
     
     func test_lapTime_shouldInteractViewModelToCallLapTimer() {

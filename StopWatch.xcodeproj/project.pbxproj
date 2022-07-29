@@ -138,8 +138,8 @@
 		7FE9B5F6288FB0A3000C3CBC /* StopWatchTests */ = {
 			isa = PBXGroup;
 			children = (
-				7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */,
 				7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */,
+				7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */,
 			);
 			path = StopWatchTests;
 			sourceTree = "<group>";
