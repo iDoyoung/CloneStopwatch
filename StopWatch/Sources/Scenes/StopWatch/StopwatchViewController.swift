@@ -131,20 +131,26 @@ class StopwatchViewController: UIViewController {
         viewModel?.laps
             .observe(on: MainScheduler.instance)
             .bind(to: lapTableView.rx.items(cellIdentifier: LapTableViewCell.resueIdentifier, cellType: LapTableViewCell.self)) { [weak self] row, lap, cell in
+                guard let self = self,
+                      let viewModel = self.viewModel else { return }
                 cell.timeLabel.text = lap.times.toCountingTime()
+                
                 cell.lapLabel.text = "랩 \(lap.index)"
-            
-                let max = self?.viewModel?.laps.value.max(by: { $0.times < $1.times })
-                let min = self?.viewModel?.laps.value.min(by: { $0.times < $1.times })
-                if lap == max {
-                    cell.timeLabel.textColor = .systemGreen
-                    cell.lapLabel.textColor = .systemGreen
-                } else if lap == min {
-                    cell.timeLabel.textColor = .systemRed
-                    cell.lapLabel.textColor = .systemRed
-                } else {
-                    cell.timeLabel.textColor = .label
-                    cell.lapLabel.textColor = .label
+                if row == 0 {
+                    viewModel.lapTimerText
+                        .bind(to: cell.timeLabel.rx.text)
+                        .disposed(by: cell.disposeBag)
+                } else if viewModel.laps.value.count > 2 {
+                    let max = viewModel.laps.value.max(by: { $0.times < $1.times })
+                    let min = viewModel.laps.value[1...].min(by: { $0.times < $1.times })
+                    if lap == min {
+                        cell.timeLabel.textColor = .systemRed
+                        cell.lapLabel.textColor = .systemRed
+                    }
+                    if lap == max {
+                        cell.timeLabel.textColor = .systemGreen
+                        cell.lapLabel.textColor = .systemGreen
+                    }
                 }
             }
             .disposed(by: disposeBag)

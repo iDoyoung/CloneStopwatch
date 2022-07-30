@@ -33,31 +33,32 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     
     private var disposeBag = DisposeBag()
     
-    var countingMainTimes = PublishSubject<Double>()
+    var countingMainTimes = BehaviorRelay<Double>(value: 0)
     var countingLapTimes = BehaviorRelay<Double>(value: 0)
     
     var mainTimer: DispatchSourceTimer?
     var lapTimer: DispatchSourceTimer?
     
+    private func configureTimer(event: @escaping() -> Void) -> DispatchSourceTimer {
+        let timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+        timer.schedule(deadline: .now(), repeating: 0.01)
+        timer.setEventHandler(handler: event)
+        return timer
+    }
+    
     func startTimer() {
         timerStatus.onNext(.counting)
-        mainTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
-        lapTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
-        
-        mainTimer?.schedule(deadline: .now(), repeating: 0.01)
-        lapTimer?.schedule(deadline: .now(), repeating: 0.01)
-        
-        mainTimer?.setEventHandler { [weak self] in
-            self?.countingMainTimes.onNext(0.01)
+        mainTimer = configureTimer { [weak self] in
+            guard let self = self else { return }
+            self.countingMainTimes.accept(self.countingMainTimes.value + 0.01)
         }
-        
-        lapTimer?.setEventHandler { [weak self] in
+        lapTimer = configureTimer { [weak self] in
             guard let self = self else { return }
             self.countingLapTimes.accept(self.countingLapTimes.value + 0.01)
         }
-        
         mainTimer?.resume()
         lapTimer?.resume()
+        lapTime()
     }
     
     func stopTimer() {
@@ -71,29 +72,33 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
         mainTimer?.resume()
         lapTimer?.resume()
     }
-    
+
     func resetTimer() {
         timerStatus.onNext(.initialized)
+        mainTimer?.resume()
+        lapTimer?.resume()
         mainTimer?.cancel()
         lapTimer?.cancel()
-        mainTimer = nil
-        lapTimer = nil
+        countingMainTimes.accept(0)
+        countingLapTimes.accept(0)
+        laps.accept([])
     }
     
+    //TODO: - Refactor method
     func lapTime() {
-        lapTimer?.cancel()
         let times = countingLapTimes.value
         var value = laps.value
-        value.insert(Lap(index: (laps.value.count+1), times: times), at: 0)//FIXME: - Reversed로 가능한지 고려
+        if !value.isEmpty {
+            value[0].times = times
+        }
+        value.insert(Lap(index: (laps.value.count+1), times: 0), at: 0)//FIXME: - Reversed로 가능한지 고려
         laps.accept(value)
+        lapTimer?.cancel()
         countingLapTimes.accept(0)
-        
-        lapTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
-        lapTimer?.setEventHandler { [weak self] in
+        lapTimer = configureTimer { [weak self] in
             guard let self = self else { return }
             self.countingLapTimes.accept(self.countingLapTimes.value + 0.01)
         }
-        lapTimer?.schedule(deadline: .now(), repeating: 0.01)
         lapTimer?.resume()
     }
     
@@ -102,11 +107,9 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     var laps = BehaviorRelay(value: [Lap]())
     
     lazy var mainTimerText = countingMainTimes
-        .scan(0) { $0 + $1 }
         .map { $0.toCountingTime() }
     
     lazy var lapTimerText = countingLapTimes
-        .scan(0) { $0 + $1 }
         .map { $0.toCountingTime() }
     
 }

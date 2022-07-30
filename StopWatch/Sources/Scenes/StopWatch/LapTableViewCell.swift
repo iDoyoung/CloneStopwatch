@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class LapTableViewCell: UITableViewCell {
-
+    
     static let resueIdentifier = "LapTableViewCellReuseIdentifier"
+    var disposeBag = DisposeBag()
     
     let lapLabel: UILabel = {
         let label = UILabel()
@@ -48,5 +50,12 @@ class LapTableViewCell: UITableViewCell {
             timeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
-
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+        lapLabel.textColor = .label
+        timeLabel.textColor = .label
+    }
+    
 }
