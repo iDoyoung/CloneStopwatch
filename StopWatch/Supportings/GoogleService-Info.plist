@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>82009525611-lldtndn9lbm9j13rqmq0ebnkcp89lgan.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.82009525611-lldtndn9lbm9j13rqmq0ebnkcp89lgan</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC9jBIXsaH28CVzi0bmVKtyjcu4yeY7HZU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>82009525611</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ido.StopWatch</string>
+	<key>PROJECT_ID</key>
+	<string>clonestopwatch</string>
+	<key>STORAGE_BUCKET</key>
+	<string>clonestopwatch.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:82009525611:ios:d5e7d92cd8bc0112db902e</string>
+</dict>
+</plist>

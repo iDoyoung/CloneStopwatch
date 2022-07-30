@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7F0C0C1E2893CB85008A1577 /* Double+ToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C1D2893CB85008A1577 /* Double+ToTime.swift */; };
 		7F0C0C202893E7C8008A1577 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C1F2893E7C8008A1577 /* Lap.swift */; };
+		7F0C0C4B289570D6008A1577 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0C0C4A289570D6008A1577 /* FirebaseAuth */; };
+		7F0C0C4D2895D373008A1577 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F0C0C4C2895D373008A1577 /* GoogleService-Info.plist */; };
 		7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66C2890245E0036712E /* ControlButton.swift */; };
 		7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66E2890E8910036712E /* LapTableViewCell.swift */; };
 		7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6702891522F0036712E /* StopwatchViewModel.swift */; };
@@ -52,6 +54,7 @@
 		7B50495E1D5F8E3E87B3A8E3 /* Pods_StopWatchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopWatchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F0C0C1D2893CB85008A1577 /* Double+ToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ToTime.swift"; sourceTree = "<group>"; };
 		7F0C0C1F2893E7C8008A1577 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
+		7F0C0C4C2895D373008A1577 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F4BD66C2890245E0036712E /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		7F4BD66E2890E8910036712E /* LapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTableViewCell.swift; sourceTree = "<group>"; };
 		7F4BD6702891522F0036712E /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97D75EB98331C61B5DE0A734 /* Pods_StopWatch.framework in Frameworks */,
+				7F0C0C4B289570D6008A1577 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +238,7 @@
 		7FE9B61B288FB45F000C3CBC /* Supportings */ = {
 			isa = PBXGroup;
 			children = (
+				7F0C0C4C2895D373008A1577 /* GoogleService-Info.plist */,
 				7FE9B5EE288FB0A3000C3CBC /* Info.plist */,
 				7FE9B5EB288FB0A3000C3CBC /* LaunchScreen.storyboard */,
 			);
@@ -281,6 +286,9 @@
 			dependencies = (
 			);
 			name = StopWatch;
+			packageProductDependencies = (
+				7F0C0C4A289570D6008A1577 /* FirebaseAuth */,
+			);
 			productName = StopWatch;
 			productReference = 7FE9B5DD288FB0A2000C3CBC /* StopWatch.app */;
 			productType = "com.apple.product-type.application";
@@ -357,6 +365,9 @@
 				Base,
 			);
 			mainGroup = 7FE9B5D4288FB0A2000C3CBC;
+			packageReferences = (
+				7F0C0C49289570D6008A1577 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 7FE9B5DE288FB0A2000C3CBC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -373,6 +384,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F0C0C4D2895D373008A1577 /* GoogleService-Info.plist in Resources */,
 				7FE9B5ED288FB0A3000C3CBC /* LaunchScreen.storyboard in Resources */,
 				7FE9B5EA288FB0A3000C3CBC /* Assets.xcassets in Resources */,
 			);
@@ -868,6 +880,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7F0C0C49289570D6008A1577 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7F0C0C4A289570D6008A1577 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F0C0C49289570D6008A1577 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7FE9B5D5288FB0A2000C3CBC /* Project object */;
 }
