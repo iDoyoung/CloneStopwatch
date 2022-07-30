@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F0C0C1E2893CB85008A1577 /* Double+ToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C1D2893CB85008A1577 /* Double+ToTime.swift */; };
+		7F0C0C202893E7C8008A1577 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C1F2893E7C8008A1577 /* Lap.swift */; };
 		7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66C2890245E0036712E /* ControlButton.swift */; };
 		7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66E2890E8910036712E /* LapTableViewCell.swift */; };
 		7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6702891522F0036712E /* StopwatchViewModel.swift */; };
@@ -50,6 +51,7 @@
 		4E0543B0E2A161E758EDD092 /* Pods-StopWatch-StopWatchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StopWatch-StopWatchUITests.release.xcconfig"; path = "Target Support Files/Pods-StopWatch-StopWatchUITests/Pods-StopWatch-StopWatchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7B50495E1D5F8E3E87B3A8E3 /* Pods_StopWatchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopWatchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F0C0C1D2893CB85008A1577 /* Double+ToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ToTime.swift"; sourceTree = "<group>"; };
+		7F0C0C1F2893E7C8008A1577 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		7F4BD66C2890245E0036712E /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		7F4BD66E2890E8910036712E /* LapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTableViewCell.swift; sourceTree = "<group>"; };
 		7F4BD6702891522F0036712E /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		7FE9B61A288FB433000C3CBC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7F0C0C1F2893E7C8008A1577 /* Lap.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 			files = (
 				7FE9B61E288FB4BA000C3CBC /* SettingViewController.swift in Sources */,
 				7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */,
+				7F0C0C202893E7C8008A1577 /* Lap.swift in Sources */,
 				7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */,
 				7FE9B613288FB3AC000C3CBC /* StopwatchViewController.swift in Sources */,
 				7F0C0C1E2893CB85008A1577 /* Double+ToTime.swift in Sources */,

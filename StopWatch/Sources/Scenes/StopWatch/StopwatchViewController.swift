@@ -69,6 +69,7 @@ class StopwatchViewController: UIViewController {
         setupUIComponents()
         observeTimerStatus()
         setupTimerTextBinding()
+        setupLapsTableViewBinding()
     }
 
     //MARK: - Setup UI
@@ -121,7 +122,31 @@ class StopwatchViewController: UIViewController {
     
     func setupTimerTextBinding() {
         viewModel?.mainTimerText
+            .observe(on: MainScheduler.instance)
             .bind(to: timeLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    func setupLapsTableViewBinding() {
+        viewModel?.laps
+            .observe(on: MainScheduler.instance)
+            .bind(to: lapTableView.rx.items(cellIdentifier: LapTableViewCell.resueIdentifier, cellType: LapTableViewCell.self)) { [weak self] row, lap, cell in
+                cell.timeLabel.text = lap.times.toCountingTime()
+                cell.lapLabel.text = "랩 \(lap.index)"
+            
+                let max = self?.viewModel?.laps.value.max(by: { $0.times < $1.times })
+                let min = self?.viewModel?.laps.value.min(by: { $0.times < $1.times })
+                if lap == max {
+                    cell.timeLabel.textColor = .systemGreen
+                    cell.lapLabel.textColor = .systemGreen
+                } else if lap == min {
+                    cell.timeLabel.textColor = .systemRed
+                    cell.lapLabel.textColor = .systemRed
+                } else {
+                    cell.timeLabel.textColor = .label
+                    cell.lapLabel.textColor = .label
+                }
+            }
             .disposed(by: disposeBag)
     }
     
