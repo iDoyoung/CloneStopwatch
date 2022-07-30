@@ -22,6 +22,7 @@ class LapTableViewCell: UITableViewCell {
     let timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
+        label.font = .monospacedDigitSystemFont(ofSize: 17, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,6 +38,7 @@ class LapTableViewCell: UITableViewCell {
     }
     
     private func setupCellUIComponents() {
+        contentView.backgroundColor = .systemBackground
         contentView.addSubview(lapLabel)
         contentView.addSubview(timeLabel)
         setUpLayoutConstraint()
@@ -44,9 +46,9 @@ class LapTableViewCell: UITableViewCell {
     
     private func setUpLayoutConstraint() {
         NSLayoutConstraint.activate([
-            lapLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            lapLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             lapLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             timeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
