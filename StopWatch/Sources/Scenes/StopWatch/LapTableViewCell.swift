@@ -46,9 +46,9 @@ class LapTableViewCell: UITableViewCell {
     
     private func setUpLayoutConstraint() {
         NSLayoutConstraint.activate([
-            lapLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            lapLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             lapLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             timeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
@@ -58,6 +58,7 @@ class LapTableViewCell: UITableViewCell {
         disposeBag = DisposeBag()
         lapLabel.textColor = .label
         timeLabel.textColor = .label
+        timeLabel.text = ""
     }
     
 }

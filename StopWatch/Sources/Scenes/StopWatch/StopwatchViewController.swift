@@ -42,7 +42,7 @@ class StopwatchViewController: UIViewController {
     
     private let lapTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .systemRed
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.register(LapTableViewCell.self, forCellReuseIdentifier: LapTableViewCell.resueIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
