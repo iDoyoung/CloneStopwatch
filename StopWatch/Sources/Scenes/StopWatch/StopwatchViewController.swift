@@ -72,6 +72,20 @@ class StopwatchViewController: UIViewController {
         setupLapsTableViewBinding()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //FIXME: - Move to SceneDelgate
+        let timerStatus = try? viewModel?.timerStatus.value()
+        guard let timerStatus = timerStatus else { return }
+        switch timerStatus {
+        case .counting:
+            viewModel?.saveTimer(isStop: false)
+        case .initialized, .stoped:
+            viewModel?.saveTimer(isStop: true)
+        }
+    }
+    
     //MARK: - Setup UI
     private func setupUIComponents() {
         view.addSubview(timeLabel)
@@ -103,7 +117,9 @@ class StopwatchViewController: UIViewController {
     }
    
     func observeTimerStatus() {
-        viewModel?.timerStatus.subscribe { [weak self] event in
+        viewModel?.timerStatus
+            .observe(on: MainScheduler.instance)
+            .subscribe { [weak self] event in
             switch event {
             case .next(let status):
                 self?.updateLeftButton(to: status)

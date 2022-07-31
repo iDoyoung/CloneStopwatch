@@ -19,6 +19,10 @@
 		7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6702891522F0036712E /* StopwatchViewModel.swift */; };
 		7F4BD67328915A400036712E /* StopwatchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */; };
 		7F4BD6752893A52E0036712E /* StopwatchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */; };
+		7FE6ABA4289648AE00598E53 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7FE6ABA3289648AE00598E53 /* FirebaseFirestore */; };
+		7FE6ABA6289648BB00598E53 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6ABA5289648BB00598E53 /* Timer.swift */; };
+		7FE6ABA8289648F000598E53 /* StopwatchFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6ABA7289648F000598E53 /* StopwatchFirestore.swift */; };
+		7FE6ABAA28964EFF00598E53 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7FE6ABA928964EFF00598E53 /* FirebaseFirestoreSwift */; };
 		7FE9B5E1288FB0A2000C3CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B5E0288FB0A2000C3CBC /* AppDelegate.swift */; };
 		7FE9B5E3288FB0A2000C3CBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B5E2288FB0A2000C3CBC /* SceneDelegate.swift */; };
 		7FE9B5EA288FB0A3000C3CBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE9B5E9288FB0A3000C3CBC /* Assets.xcassets */; };
@@ -64,6 +68,8 @@
 		7F4BD6702891522F0036712E /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
 		7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModelTests.swift; sourceTree = "<group>"; };
 		7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewControllerTests.swift; sourceTree = "<group>"; };
+		7FE6ABA5289648BB00598E53 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		7FE6ABA7289648F000598E53 /* StopwatchFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchFirestore.swift; sourceTree = "<group>"; };
 		7FE9B5DD288FB0A2000C3CBC /* StopWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE9B5E0288FB0A2000C3CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FE9B5E2288FB0A2000C3CBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +100,9 @@
 				97D75EB98331C61B5DE0A734 /* Pods_StopWatch.framework in Frameworks */,
 				7F0C0C4B289570D6008A1577 /* FirebaseAuth in Frameworks */,
 				7F0C0C502895DB7A008A1577 /* GoogleSignIn in Frameworks */,
+				7FE6ABA4289648AE00598E53 /* FirebaseFirestore in Frameworks */,
 				7F0C0C522895DB7A008A1577 /* GoogleSignInSwift in Frameworks */,
+				7FE6ABAA28964EFF00598E53 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				7F0C0C542896019F008A1577 /* SocialLoginService.swift */,
+				7FE6ABA7289648F000598E53 /* StopwatchFirestore.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -186,9 +195,9 @@
 		7FE9B614288FB3B1000C3CBC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7F0C0C5328960184008A1577 /* Service */,
 				7FE9B615288FB3BC000C3CBC /* Entries */,
 				7FE9B61A288FB433000C3CBC /* Models */,
+				7F0C0C5328960184008A1577 /* Service */,
 				7FE9B619288FB3F9000C3CBC /* Scenes */,
 				7F0C0C1C2893CB46008A1577 /* Utils */,
 			);
@@ -246,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				7F0C0C1F2893E7C8008A1577 /* Lap.swift */,
+				7FE6ABA5289648BB00598E53 /* Timer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,6 +315,8 @@
 				7F0C0C4A289570D6008A1577 /* FirebaseAuth */,
 				7F0C0C4F2895DB7A008A1577 /* GoogleSignIn */,
 				7F0C0C512895DB7A008A1577 /* GoogleSignInSwift */,
+				7FE6ABA3289648AE00598E53 /* FirebaseFirestore */,
+				7FE6ABA928964EFF00598E53 /* FirebaseFirestoreSwift */,
 			);
 			productName = StopWatch;
 			productReference = 7FE9B5DD288FB0A2000C3CBC /* StopWatch.app */;
@@ -553,8 +565,10 @@
 				7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */,
 				7F0C0C202893E7C8008A1577 /* Lap.swift in Sources */,
 				7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */,
+				7FE6ABA6289648BB00598E53 /* Timer.swift in Sources */,
 				7F0C0C552896019F008A1577 /* SocialLoginService.swift in Sources */,
 				7FE9B613288FB3AC000C3CBC /* StopwatchViewController.swift in Sources */,
+				7FE6ABA8289648F000598E53 /* StopwatchFirestore.swift in Sources */,
 				7F0C0C1E2893CB85008A1577 /* Double+ToTime.swift in Sources */,
 				7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */,
 				7FE9B620288FC03B000C3CBC /* LoginRouter.swift in Sources */,
@@ -934,6 +948,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7F0C0C4E2895DB7A008A1577 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		7FE6ABA3289648AE00598E53 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F0C0C49289570D6008A1577 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		7FE6ABA928964EFF00598E53 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F0C0C49289570D6008A1577 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

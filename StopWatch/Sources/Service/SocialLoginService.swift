@@ -20,8 +20,12 @@ final class SocialLoginService {
     func googleLogin(source: UIViewController, completion: @escaping () -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         let config = GIDConfiguration(clientID: clientID)
+        
         GIDSignIn.sharedInstance.signIn(with: config, presenting: source) { [unowned self] user, error in
             if let error = error {
+                #if DEBUG
+                print("Error: \(error.localizedDescription), To do handler error")
+                #endif
                 return
             }
             guard let authentication = user?.authentication,
@@ -38,7 +42,8 @@ final class SocialLoginService {
                     #endif
                     return
                 } else {
-                    print(authResult?.user.uid)
+                    guard let result = authResult else { return }
+                    UserDefaults.standard.set(result.user.uid, forKey: "userID")
                     completion()
                 }
             }

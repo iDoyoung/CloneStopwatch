@@ -14,6 +14,7 @@ protocol StopwatchViewModelInput {
     func resetTimer()
     func restartTimer()
     func lapTime()
+    func saveTimer(isStop: Bool)
 }
 
 protocol StopwatchViewModelOutput {
@@ -32,6 +33,7 @@ enum TimerStatus {
 class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     
     private var disposeBag = DisposeBag()
+    var firestore = StopwatchFirestore()
     
     var countingMainTimes = BehaviorRelay<Double>(value: 0)
     var countingLapTimes = BehaviorRelay<Double>(value: 0)
@@ -40,12 +42,13 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     var lapTimer: DispatchSourceTimer?
     
     private func configureTimer(event: @escaping() -> Void) -> DispatchSourceTimer {
-        let timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+        let timer = DispatchSource.makeTimerSource(flags: [], queue: .global())
         timer.schedule(deadline: .now(), repeating: 0.01)
         timer.setEventHandler(handler: event)
         return timer
     }
     
+    //MARK: - Input
     func startTimer() {
         timerStatus.onNext(.counting)
         mainTimer = configureTimer { [weak self] in
@@ -82,6 +85,16 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
         countingMainTimes.accept(0)
         countingLapTimes.accept(0)
         laps.accept([])
+    }
+    
+    func saveTimer(isStop: Bool) {
+        guard let user = UserDefaults.standard.string(forKey: "userID") else { return }
+        let currentTimer = Timer(userID: user,
+                                 mainTimer: countingMainTimes.value,
+                                 lapTimer: countingLapTimes.value,
+                                 laps: laps.value,
+                                 isStop: isStop)
+        firestore.saveStopwatchData(timer: currentTimer)
     }
     
     //TODO: - Refactor method

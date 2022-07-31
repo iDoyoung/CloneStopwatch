@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Lap: Equatable {
+struct Lap: Equatable, Codable {
     var index: Int
     var times: Double
     
