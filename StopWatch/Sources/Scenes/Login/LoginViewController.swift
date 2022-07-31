@@ -77,7 +77,10 @@ final class LoginViewController: UIViewController {
     private func setupBinding() {
         loginButton.rx.tap
             .bind { [weak self] in
-                self?.router?.showLoginSuccess()
+                guard let self = self else { return }
+                SocialLoginService().googleLogin(source: self ) {
+                    self.router?.showLoginSuccess()
+                }
             }
             .disposed(by: disposeBag)
     }

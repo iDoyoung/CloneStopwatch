@@ -11,6 +11,9 @@
 		7F0C0C202893E7C8008A1577 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C1F2893E7C8008A1577 /* Lap.swift */; };
 		7F0C0C4B289570D6008A1577 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0C0C4A289570D6008A1577 /* FirebaseAuth */; };
 		7F0C0C4D2895D373008A1577 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F0C0C4C2895D373008A1577 /* GoogleService-Info.plist */; };
+		7F0C0C502895DB7A008A1577 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0C0C4F2895DB7A008A1577 /* GoogleSignIn */; };
+		7F0C0C522895DB7A008A1577 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0C0C512895DB7A008A1577 /* GoogleSignInSwift */; };
+		7F0C0C552896019F008A1577 /* SocialLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C542896019F008A1577 /* SocialLoginService.swift */; };
 		7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66C2890245E0036712E /* ControlButton.swift */; };
 		7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66E2890E8910036712E /* LapTableViewCell.swift */; };
 		7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6702891522F0036712E /* StopwatchViewModel.swift */; };
@@ -55,6 +58,7 @@
 		7F0C0C1D2893CB85008A1577 /* Double+ToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ToTime.swift"; sourceTree = "<group>"; };
 		7F0C0C1F2893E7C8008A1577 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		7F0C0C4C2895D373008A1577 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7F0C0C542896019F008A1577 /* SocialLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginService.swift; sourceTree = "<group>"; };
 		7F4BD66C2890245E0036712E /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		7F4BD66E2890E8910036712E /* LapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTableViewCell.swift; sourceTree = "<group>"; };
 		7F4BD6702891522F0036712E /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 			files = (
 				97D75EB98331C61B5DE0A734 /* Pods_StopWatch.framework in Frameworks */,
 				7F0C0C4B289570D6008A1577 /* FirebaseAuth in Frameworks */,
+				7F0C0C502895DB7A008A1577 /* GoogleSignIn in Frameworks */,
+				7F0C0C522895DB7A008A1577 /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +123,14 @@
 				7F0C0C1D2893CB85008A1577 /* Double+ToTime.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7F0C0C5328960184008A1577 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7F0C0C542896019F008A1577 /* SocialLoginService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		7FE9B5D4288FB0A2000C3CBC = {
@@ -172,6 +186,7 @@
 		7FE9B614288FB3B1000C3CBC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7F0C0C5328960184008A1577 /* Service */,
 				7FE9B615288FB3BC000C3CBC /* Entries */,
 				7FE9B61A288FB433000C3CBC /* Models */,
 				7FE9B619288FB3F9000C3CBC /* Scenes */,
@@ -288,6 +303,8 @@
 			name = StopWatch;
 			packageProductDependencies = (
 				7F0C0C4A289570D6008A1577 /* FirebaseAuth */,
+				7F0C0C4F2895DB7A008A1577 /* GoogleSignIn */,
+				7F0C0C512895DB7A008A1577 /* GoogleSignInSwift */,
 			);
 			productName = StopWatch;
 			productReference = 7FE9B5DD288FB0A2000C3CBC /* StopWatch.app */;
@@ -367,6 +384,7 @@
 			mainGroup = 7FE9B5D4288FB0A2000C3CBC;
 			packageReferences = (
 				7F0C0C49289570D6008A1577 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7F0C0C4E2895DB7A008A1577 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 7FE9B5DE288FB0A2000C3CBC /* Products */;
 			projectDirPath = "";
@@ -535,6 +553,7 @@
 				7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */,
 				7F0C0C202893E7C8008A1577 /* Lap.swift in Sources */,
 				7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */,
+				7F0C0C552896019F008A1577 /* SocialLoginService.swift in Sources */,
 				7FE9B613288FB3AC000C3CBC /* StopwatchViewController.swift in Sources */,
 				7F0C0C1E2893CB85008A1577 /* Double+ToTime.swift in Sources */,
 				7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */,
@@ -890,6 +909,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		7F0C0C4E2895DB7A008A1577 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -897,6 +924,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7F0C0C49289570D6008A1577 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		7F0C0C4F2895DB7A008A1577 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F0C0C4E2895DB7A008A1577 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		7F0C0C512895DB7A008A1577 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F0C0C4E2895DB7A008A1577 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
