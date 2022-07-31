@@ -199,6 +199,7 @@ class StopwatchViewController: UIViewController {
             leftButton.isEnabled = true
         case .stoped:
             leftButton.setTitle("재설정", for: .normal)
+            leftButton.isEnabled = true
         }
     }
     
