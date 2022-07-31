@@ -24,11 +24,21 @@ class StopwatchViewModelTests: XCTestCase {
 
     override func tearDownWithError() throws {
         sut = nil
+        UserDefaults.standard.removeObject(forKey: "userID")
         try super.tearDownWithError()
     }
     
     //MARK: - Test doubles
-
+    class StopwatchFirestoreSpy: StopwatchFirestoreProtocol {
+        
+        var saveStopwatchDataCalled = false
+        
+        func saveStopwatchData(timer: StopwatchTimer) {
+            guard UserDefaults.standard.string(forKey: "userID") != nil else { return }
+            saveStopwatchDataCalled = true
+        }
+    }
+    
     //MARK: - Tests
     func test_startTimer_mainTimerAndLaptimerShouldBeNotCancelled() {
         //given
@@ -89,6 +99,28 @@ class StopwatchViewModelTests: XCTestCase {
         //then
         XCTAssertNil(sut.mainTimer)
         XCTAssertNil(sut.lapTimer)
+    }
+    
+    func test_saveTimer_whenUserIDIsNotNil_shouldCallStopwatchFirestore() {
+        //given
+        let stopwatchFirestoreSpy = StopwatchFirestoreSpy()
+        sut.firestore = stopwatchFirestoreSpy
+        UserDefaults.standard.set("test", forKey: "userID")
+        //when
+        sut.saveTimer(isStop: true)
+        //then
+        XCTAssert(stopwatchFirestoreSpy.saveStopwatchDataCalled)
+    }
+    
+    func test_saveTimer_whenUserIDIsNil_shouldNotCallStopwatchFirestore() {
+        //given
+        let stopwatchFirestoreSpy = StopwatchFirestoreSpy()
+        sut.firestore = stopwatchFirestoreSpy
+        UserDefaults.standard.removeObject(forKey: "userID")
+        //when
+        sut.saveTimer(isStop: true)
+        //then
+        XCTAssert(!stopwatchFirestoreSpy.saveStopwatchDataCalled)
     }
     
 }

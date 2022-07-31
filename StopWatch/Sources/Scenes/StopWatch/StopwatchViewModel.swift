@@ -33,7 +33,7 @@ enum TimerStatus {
 class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     
     private var disposeBag = DisposeBag()
-    var firestore = StopwatchFirestore()
+    var firestore: StopwatchFirestoreProtocol = StopwatchFirestore()
     
     var countingMainTimes = BehaviorRelay<Double>(value: 0)
     var countingLapTimes = BehaviorRelay<Double>(value: 0)
@@ -89,7 +89,7 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     
     func saveTimer(isStop: Bool) {
         guard let user = UserDefaults.standard.string(forKey: "userID") else { return }
-        let currentTimer = Timer(userID: user,
+        let currentTimer = StopwatchTimer(userID: user,
                                  mainTimer: countingMainTimes.value,
                                  lapTimer: countingLapTimes.value,
                                  laps: laps.value,

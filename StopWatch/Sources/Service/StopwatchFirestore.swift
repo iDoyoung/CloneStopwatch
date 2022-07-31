@@ -9,11 +9,15 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-final class StopwatchFirestore {
+protocol StopwatchFirestoreProtocol {
+    func saveStopwatchData(timer: StopwatchTimer)
+}
+
+final class StopwatchFirestore: StopwatchFirestoreProtocol {
     
     let db = Firestore.firestore()
    
-    func saveStopwatchData(timer: Timer) {
+    func saveStopwatchData(timer: StopwatchTimer) {
         do {
             guard let user = UserDefaults.standard.string(forKey: "userID") else { return }
             try db.collection("stopwatch").document(user).setData(from: timer)

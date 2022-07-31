@@ -7,6 +7,7 @@
 
 import XCTest
 import RxSwift
+import RxRelay
 
 @testable import StopWatch
 
@@ -27,7 +28,7 @@ class StopwatchViewControllerTests: XCTestCase {
 
     //MARK: - Test doubles
     final class StopwatchViewModelSpy: StopwatchViewModelInput&StopwatchViewModelOutput {
-        
+
         var startTimerCalled = false
         var stopTimerCalled = false
         var restartTimerCalled = false
@@ -54,10 +55,14 @@ class StopwatchViewControllerTests: XCTestCase {
             lapTimeCalled = true
         }
         
+        func saveTimer(isStop: Bool) {
+            
+        }
+        
         var timerStatus = BehaviorSubject<TimerStatus>(value: .initialized)
         var mainTimerText: Observable<String> = Observable.just("Test main time")
         var lapTimerText: Observable<String> = Observable.just("Test Lap time")
-        
+        var laps = BehaviorRelay<[Lap]>(value: [])
     }
     
     //MARK: - Tests

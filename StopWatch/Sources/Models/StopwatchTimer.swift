@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Timer: Codable {
+struct StopwatchTimer: Codable {
     
     let userID: String
     let mainTimer: Double
