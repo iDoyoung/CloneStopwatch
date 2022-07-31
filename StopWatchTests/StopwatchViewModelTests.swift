@@ -32,6 +32,11 @@ class StopwatchViewModelTests: XCTestCase {
     class StopwatchFirestoreSpy: StopwatchFirestoreProtocol {
         
         var saveStopwatchDataCalled = false
+        var getStopwatchDataCalled = false
+        
+        func getStopwatchData(completion: @escaping (StopwatchTimer) -> Void) {
+            getStopwatchDataCalled = true
+        }
         
         func saveStopwatchData(timer: StopwatchTimer) {
             guard UserDefaults.standard.string(forKey: "userID") != nil else { return }
@@ -107,7 +112,7 @@ class StopwatchViewModelTests: XCTestCase {
         sut.firestore = stopwatchFirestoreSpy
         UserDefaults.standard.set("test", forKey: "userID")
         //when
-        sut.saveTimer(isStop: true)
+        sut.saveStopwatchTimer(isStop: true)
         //then
         XCTAssert(stopwatchFirestoreSpy.saveStopwatchDataCalled)
     }
@@ -118,9 +123,19 @@ class StopwatchViewModelTests: XCTestCase {
         sut.firestore = stopwatchFirestoreSpy
         UserDefaults.standard.removeObject(forKey: "userID")
         //when
-        sut.saveTimer(isStop: true)
+        sut.saveStopwatchTimer(isStop: true)
         //then
         XCTAssert(!stopwatchFirestoreSpy.saveStopwatchDataCalled)
+    }
+    
+    func test_fetchStopwatchTimer_shouldCallGetStopwatchData() {
+        //given
+        let stopwatchFirestoreSpy = StopwatchFirestoreSpy()
+        sut.firestore = stopwatchFirestoreSpy
+        //when
+        sut.fetchStopwatchTimer()
+        //then
+        XCTAssert(stopwatchFirestoreSpy.getStopwatchDataCalled)
     }
     
 }

@@ -14,7 +14,8 @@ protocol StopwatchViewModelInput {
     func resetTimer()
     func restartTimer()
     func lapTime()
-    func saveTimer(isStop: Bool)
+    func fetchStopwatchTimer()
+    func saveStopwatchTimer(isStop: Bool)
 }
 
 protocol StopwatchViewModelOutput {
@@ -33,6 +34,11 @@ enum TimerStatus {
 class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     
     private var disposeBag = DisposeBag()
+    //메인타이머 시작시간
+    private var mainStartedTime: Double?
+    //랩 타이머 시작시간
+    private var lapStartedTime: Double?
+    
     var firestore: StopwatchFirestoreProtocol = StopwatchFirestore()
     
     var countingMainTimes = BehaviorRelay<Double>(value: 0)
@@ -48,7 +54,42 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
         return timer
     }
     
+    ///현재시간 밀리세컨즈 구하기
+    private func currentTimeToDouble() -> Double {
+        return Double(Int64(Date().timeIntervalSince1970 * 1000)) / 1000
+    }
+    
     //MARK: - Input
+    //TODO: - Refactor method
+    func fetchStopwatchTimer() {
+        firestore.getStopwatchData { [weak self] timer in
+            guard let self = self else { return }
+            self.mainStartedTime = timer.mainTimer
+            self.lapStartedTime = timer.lapTimer
+            
+            self.countingMainTimes.accept(self.currentTimeToDouble() - timer.mainTimer)
+            self.countingLapTimes.accept(self.currentTimeToDouble() - timer.lapTimer)
+            self.laps.accept(timer.laps)
+            
+            self.mainTimer = self.configureTimer { [weak self] in
+                guard let self = self else { return }
+                self.countingMainTimes.accept(self.countingMainTimes.value + 0.01)
+            }
+            self.lapTimer = self.configureTimer { [weak self] in
+                guard let self = self else { return }
+                self.countingLapTimes.accept(self.countingLapTimes.value + 0.01)
+            }
+            
+            if timer.isStop {
+                self.timerStatus.onNext(.stoped)
+            } else {
+                self.timerStatus.onNext(.counting)
+                self.mainTimer?.resume()
+                self.lapTimer?.resume()
+            }
+        }
+    }
+        
     func startTimer() {
         timerStatus.onNext(.counting)
         mainTimer = configureTimer { [weak self] in
@@ -61,6 +102,10 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
         }
         mainTimer?.resume()
         lapTimer?.resume()
+        
+        mainStartedTime = currentTimeToDouble()
+        lapStartedTime = currentTimeToDouble()
+        
         lapTime()
     }
     
@@ -87,11 +132,11 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
         laps.accept([])
     }
     
-    func saveTimer(isStop: Bool) {
+    func saveStopwatchTimer(isStop: Bool) {
         guard let user = UserDefaults.standard.string(forKey: "userID") else { return }
         let currentTimer = StopwatchTimer(userID: user,
-                                 mainTimer: countingMainTimes.value,
-                                 lapTimer: countingLapTimes.value,
+                                 mainTimer: mainStartedTime ?? currentTimeToDouble(),
+                                 lapTimer: lapStartedTime ?? currentTimeToDouble(),
                                  laps: laps.value,
                                  isStop: isStop)
         firestore.saveStopwatchData(timer: currentTimer)
@@ -113,6 +158,7 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
             self.countingLapTimes.accept(self.countingLapTimes.value + 0.01)
         }
         lapTimer?.resume()
+        lapStartedTime = currentTimeToDouble()
     }
     
     //MARK: - Output

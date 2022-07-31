@@ -70,6 +70,7 @@ class StopwatchViewController: UIViewController {
         observeTimerStatus()
         setupTimerTextBinding()
         setupLapsTableViewBinding()
+        viewModel?.fetchStopwatchTimer()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,9 +81,9 @@ class StopwatchViewController: UIViewController {
         guard let timerStatus = timerStatus else { return }
         switch timerStatus {
         case .counting:
-            viewModel?.saveTimer(isStop: false)
+            viewModel?.saveStopwatchTimer(isStop: false)
         case .initialized, .stoped:
-            viewModel?.saveTimer(isStop: true)
+            viewModel?.saveStopwatchTimer(isStop: true)
         }
     }
     
