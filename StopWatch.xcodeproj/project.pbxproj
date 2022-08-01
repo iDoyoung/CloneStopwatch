@@ -17,6 +17,7 @@
 		7F0C0C502895DB7A008A1577 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0C0C4F2895DB7A008A1577 /* GoogleSignIn */; };
 		7F0C0C522895DB7A008A1577 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0C0C512895DB7A008A1577 /* GoogleSignInSwift */; };
 		7F0C0C552896019F008A1577 /* SocialLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C542896019F008A1577 /* SocialLoginService.swift */; };
+		7F1B9E262897DDF000C26F5E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1B9E252897DDF000C26F5E /* TimerManager.swift */; };
 		7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66C2890245E0036712E /* ControlButton.swift */; };
 		7F4BD66F2890E8910036712E /* LapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD66E2890E8910036712E /* LapTableViewCell.swift */; };
 		7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6702891522F0036712E /* StopwatchViewModel.swift */; };
@@ -71,6 +72,7 @@
 		7F0C0C1F2893E7C8008A1577 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		7F0C0C4C2895D373008A1577 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F0C0C542896019F008A1577 /* SocialLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginService.swift; sourceTree = "<group>"; };
+		7F1B9E252897DDF000C26F5E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		7F4BD66C2890245E0036712E /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		7F4BD66E2890E8910036712E /* LapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTableViewCell.swift; sourceTree = "<group>"; };
 		7F4BD6702891522F0036712E /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				7F4BD66E2890E8910036712E /* LapTableViewCell.swift */,
 				7FE9B612288FB3AC000C3CBC /* StopwatchViewController.swift */,
 				7F4BD6702891522F0036712E /* StopwatchViewModel.swift */,
+				7F1B9E252897DDF000C26F5E /* TimerManager.swift */,
 			);
 			path = StopWatch;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				7FE9B620288FC03B000C3CBC /* LoginRouter.swift in Sources */,
 				7FE5083C2897B4D2003AF13F /* AppDependency.swift in Sources */,
 				7FE9B611288FB395000C3CBC /* LoginViewController.swift in Sources */,
+				7F1B9E262897DDF000C26F5E /* TimerManager.swift in Sources */,
 				7FE9B5E1288FB0A2000C3CBC /* AppDelegate.swift in Sources */,
 				7FE9B5E3288FB0A2000C3CBC /* SceneDelegate.swift in Sources */,
 			);

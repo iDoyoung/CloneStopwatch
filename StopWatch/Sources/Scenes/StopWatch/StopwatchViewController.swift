@@ -66,15 +66,7 @@ class StopwatchViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        //FIXME: - Move to SceneDelgate
-        let timerStatus = try? viewModel?.timerStatus.value()
-        guard let timerStatus = timerStatus else { return }
-        switch timerStatus {
-        case .counting:
-            viewModel?.saveStopwatchTimer(isStop: false)
-        case .initialized, .stoped:
-            viewModel?.saveStopwatchTimer(isStop: true)
-        }
+        viewModel?.saveStopwatchTimer()
     }
     
     //MARK: - Setup UI
