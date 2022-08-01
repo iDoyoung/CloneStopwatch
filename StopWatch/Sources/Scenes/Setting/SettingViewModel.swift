@@ -13,12 +13,17 @@ enum UserInterfaceStyle: String, CaseIterable {
     case dark
 }
 
-final class SettingViewModel {
+protocol SettingViewModelInput {
+    func logout(completion: @escaping () -> Void)
+    func setUserInterfaceStyle(_ style: UserInterfaceStyle)
+}
+
+final class SettingViewModel: SettingViewModelInput {
     
-    var service = SocialLoginService()
+    var service: SocialLoginProtocol?
     
     func logout(completion: @escaping () -> Void) {
-        service.signOut {
+        service?.signOut {
             completion()
         }
     }

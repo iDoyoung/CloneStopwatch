@@ -49,16 +49,6 @@ class StopwatchViewController: UIViewController {
     }()
     
     //MARK: - Life cycle
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        viewModel = StopwatchViewModel()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        viewModel = StopwatchViewModel()
-    }
-    
     override func loadView() {
         super.loadView()
         view.backgroundColor = .systemBackground
@@ -264,4 +254,12 @@ class StopwatchViewController: UIViewController {
         viewModel?.resetTimer()
     }
     
+}
+
+extension StopwatchViewController {
+    static let factory: ((StopwatchViewModelInput&StopwatchViewModelOutput) -> StopwatchViewController) = { viewModel in
+        let stopwatchViewController = StopwatchViewController()
+        stopwatchViewController.viewModel = viewModel
+        return stopwatchViewController
+    }
 }

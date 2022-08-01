@@ -9,7 +9,7 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
-    let viewModel = SettingViewModel()
+    var viewModel: SettingViewModelInput?
     private let userInterfaceStyle = UserDefaults.standard.string(forKey: "UserInterfaceStyle")
     
     private lazy var logoutButton: UIButton = {
@@ -85,7 +85,7 @@ class SettingViewController: UIViewController {
     
     @objc
     private func logout() {
-        viewModel.logout { [weak self] in
+        viewModel?.logout { [weak self] in
             self?.dismiss(animated: true)
         }
     }
@@ -93,7 +93,7 @@ class SettingViewController: UIViewController {
     @objc
     private func setInterfaceStyle(_ sender: UISegmentedControl) {
         let interfaceStyle = UserInterfaceStyle.allCases[sender.selectedSegmentIndex]
-        viewModel.setUserInterfaceStyle(interfaceStyle)
+        viewModel?.setUserInterfaceStyle(interfaceStyle)
         switch interfaceStyle {
         case .device:
             view.window?.overrideUserInterfaceStyle = .unspecified
@@ -104,4 +104,12 @@ class SettingViewController: UIViewController {
         }
     }
     
+}
+
+extension SettingViewController {
+    static let factory: (SettingViewModelInput) -> SettingViewController = { viewModel in
+        let settingViewController = SettingViewController()
+        settingViewController.viewModel = viewModel
+        return settingViewController
+    }
 }

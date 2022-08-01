@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let appDependency = AppDependency.resolve()
     private let userInterfaceStyle = UserDefaults.standard.string(forKey: "UserInterfaceStyle")
     //TODO: - DI
 
@@ -33,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         
-        let initialViewController = LoginViewController()
+        let initialViewController = appDependency.loginViewController
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
     }

@@ -32,16 +32,6 @@ final class LoginViewController: UIViewController {
     }()
     
     //MARK: - Life cycle
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setupViewController()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupViewController()
-    }
-    
     override func loadView() {
         super.loadView()
         view.backgroundColor = .systemBackground
@@ -58,16 +48,7 @@ final class LoginViewController: UIViewController {
             self?.router?.showLoginSuccess()
         }
     }
-    
-    private func setupViewController() {
-        let viewController = self
-        let viewModel = LoginViewModel()
-        let router = LoginRouter()
-        router.viewController = viewController
-        viewController.viewModel = viewModel
-        viewController.router = router
-    }
-    
+
     private func setupUIComponents() {
         view.addSubview(titleLabel)
         view.addSubview(loginButton)

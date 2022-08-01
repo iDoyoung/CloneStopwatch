@@ -15,19 +15,21 @@ protocol LoginRouterLogic {
 final class LoginRouter: LoginRouterLogic {
     
     weak var viewController: UIViewController?
+    var stopwatchViewController: StopwatchViewController!
+    var settingViewController: SettingViewController!
     
     private lazy var firstTabViewController: UIViewController = {
-        let viewController = StopwatchViewController()
+        let viewController = stopwatchViewController
         let image = UIImage(systemName: "stopwatch.fill")
-        viewController.tabBarItem = UITabBarItem(title: "Stopwatch", image: image, selectedImage: image)
-        return viewController
+        viewController!.tabBarItem = UITabBarItem(title: "Stopwatch", image: image, selectedImage: image)
+        return viewController!
     }()
     
     private lazy var secondTabViewController: UIViewController = {
-        let viewController = SettingViewController()
+        let viewController = settingViewController
         let image = UIImage(systemName: "gear")
-        viewController.tabBarItem = UITabBarItem(title: "Setting", image: image, selectedImage: image)
-        return viewController
+        viewController!.tabBarItem = UITabBarItem(title: "Setting", image: image, selectedImage: image)
+        return viewController!
     }()
     
     func showLoginSuccess() {
