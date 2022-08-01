@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    private let userInterfaceStyle = UserDefaults.standard.string(forKey: "UserInterfaceStyle")
     //TODO: - DI
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,6 +19,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
+    
+        if let userInterfaceStyle = userInterfaceStyle {
+            switch UserInterfaceStyle.init(rawValue: userInterfaceStyle) {
+            case .device:
+                window?.overrideUserInterfaceStyle = .unspecified
+            case .dark:
+                window?.overrideUserInterfaceStyle = .dark
+            case .light:
+                window?.overrideUserInterfaceStyle = .light
+            case .none:
+                window?.overrideUserInterfaceStyle = .unspecified
+            }
+        }
+        
         let initialViewController = LoginViewController()
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()

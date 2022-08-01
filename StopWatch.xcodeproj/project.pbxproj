@@ -22,6 +22,7 @@
 		7F4BD6712891522F0036712E /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6702891522F0036712E /* StopwatchViewModel.swift */; };
 		7F4BD67328915A400036712E /* StopwatchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */; };
 		7F4BD6752893A52E0036712E /* StopwatchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */; };
+		7FE5083A28978E44003AF13F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5083928978E44003AF13F /* SettingViewModel.swift */; };
 		7FE6ABA4289648AE00598E53 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7FE6ABA3289648AE00598E53 /* FirebaseFirestore */; };
 		7FE6ABA6289648BB00598E53 /* StopwatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6ABA5289648BB00598E53 /* StopwatchTimer.swift */; };
 		7FE6ABA8289648F000598E53 /* StopwatchFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6ABA7289648F000598E53 /* StopwatchFirestore.swift */; };
@@ -74,6 +75,7 @@
 		7F4BD6702891522F0036712E /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
 		7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModelTests.swift; sourceTree = "<group>"; };
 		7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewControllerTests.swift; sourceTree = "<group>"; };
+		7FE5083928978E44003AF13F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7FE6ABA5289648BB00598E53 /* StopwatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTimer.swift; sourceTree = "<group>"; };
 		7FE6ABA7289648F000598E53 /* StopwatchFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchFirestore.swift; sourceTree = "<group>"; };
 		7FE9B5DD288FB0A2000C3CBC /* StopWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				7FE9B61D288FB4BA000C3CBC /* SettingViewController.swift */,
+				7FE5083928978E44003AF13F /* SettingViewModel.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				7F02BCE22896B3EE001D44D0 /* LoginViewModel.swift in Sources */,
 				7F0C0C1E2893CB85008A1577 /* Double+ToTime.swift in Sources */,
 				7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */,
+				7FE5083A28978E44003AF13F /* SettingViewModel.swift in Sources */,
 				7FE9B620288FC03B000C3CBC /* LoginRouter.swift in Sources */,
 				7FE9B611288FB395000C3CBC /* LoginViewController.swift in Sources */,
 				7FE9B5E1288FB0A2000C3CBC /* AppDelegate.swift in Sources */,
