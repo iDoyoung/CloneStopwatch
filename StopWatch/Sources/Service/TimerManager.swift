@@ -26,7 +26,7 @@ final class TimerManager {
     var laps = BehaviorRelay(value: [Lap]())
     
     func configureTimer(event: @escaping() -> Void) -> DispatchSourceTimer {
-        let timer = DispatchSource.makeTimerSource(flags: [], queue: .global())
+        let timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
         timer.schedule(deadline: .now(), repeating: 0.01)
         timer.setEventHandler(handler: event)
         return timer
