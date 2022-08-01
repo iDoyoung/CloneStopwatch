@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+final class SettingViewController: UIViewController {
 
     var viewModel: SettingViewModelInput?
     private let userInterfaceStyle = UserDefaults.standard.string(forKey: "UserInterfaceStyle")

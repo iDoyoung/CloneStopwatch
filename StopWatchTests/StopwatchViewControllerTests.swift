@@ -55,7 +55,7 @@ class StopwatchViewControllerTests: XCTestCase {
             lapTimeCalled = true
         }
         
-        func saveStopwatchTimer(isStop: Bool) {
+        func saveStopwatchTimer() {
             
         }
         

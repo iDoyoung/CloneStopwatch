@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class StopwatchViewController: UIViewController {
+final class StopwatchViewController: UIViewController {
 
     var viewModel: (StopwatchViewModelInput&StopwatchViewModelOutput)?
     

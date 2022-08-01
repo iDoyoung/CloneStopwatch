@@ -31,7 +31,7 @@ enum TimerStatus {
     case stoped
 }
 
-class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
+final class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     
     private var disposeBag = DisposeBag()
     var firestore: StopwatchFirestoreProtocol

@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class LapTableViewCell: UITableViewCell {
+final class LapTableViewCell: UITableViewCell {
     
     static let resueIdentifier = "LapTableViewCellReuseIdentifier"
     var disposeBag = DisposeBag()
