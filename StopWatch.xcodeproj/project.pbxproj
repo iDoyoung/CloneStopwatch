@@ -150,6 +150,7 @@
 			children = (
 				7F0C0C542896019F008A1577 /* SocialLoginService.swift */,
 				7FE6ABA7289648F000598E53 /* StopwatchFirestore.swift */,
+				7F1B9E252897DDF000C26F5E /* TimerManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -245,7 +246,6 @@
 				7F4BD66E2890E8910036712E /* LapTableViewCell.swift */,
 				7FE9B612288FB3AC000C3CBC /* StopwatchViewController.swift */,
 				7F4BD6702891522F0036712E /* StopwatchViewModel.swift */,
-				7F1B9E252897DDF000C26F5E /* TimerManager.swift */,
 			);
 			path = StopWatch;
 			sourceTree = "<group>";

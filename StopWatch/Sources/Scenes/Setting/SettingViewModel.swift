@@ -20,10 +20,20 @@ protocol SettingViewModelInput {
 
 final class SettingViewModel: SettingViewModelInput {
     
-    var service: SocialLoginProtocol?
+    var loginService: SocialLoginProtocol
+    var timerManager: TimerManager
+    var firestore: StopwatchFirestoreProtocol
     
+    init(loginService: SocialLoginProtocol, timerManager: TimerManager, firestore: StopwatchFirestoreProtocol) {
+        self.loginService = loginService
+        self.timerManager = timerManager
+        self.firestore = firestore
+    }
     func logout(completion: @escaping () -> Void) {
-        service?.signOut {
+        loginService.signOut { [weak self] in
+            guard let user = UserDefaults.standard.string(forKey: "userID") else { return }
+            guard let timer = self?.timerManager.getCurrentTimerData(by: user) else { return }
+            self?.firestore.saveStopwatchData(timer: timer)
             completion()
         }
     }

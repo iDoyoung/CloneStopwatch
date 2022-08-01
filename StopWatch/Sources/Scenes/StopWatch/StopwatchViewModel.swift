@@ -34,8 +34,17 @@ enum TimerStatus {
 class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     
     private var disposeBag = DisposeBag()
-    var firestore: StopwatchFirestoreProtocol = StopwatchFirestore()
-    var timerManager: TimerManager = TimerManager()
+    var firestore: StopwatchFirestoreProtocol
+    var timerManager: TimerManager
+    
+    init(timerManager: TimerManager, firestore: StopwatchFirestoreProtocol) {
+        self.timerManager = timerManager
+        self.firestore = firestore
+        timerStatus = timerManager.timerStatus
+        laps = timerManager.laps
+        mainTimerText = timerManager.countingMainTimes.map { $0.toCountingTime() }
+        lapTimerText = timerManager.countingLapTimes.map { $0.toCountingTime() }
+    }
     
     //MARK: - Input
     func startTimer() {
@@ -103,12 +112,5 @@ class StopwatchViewModel: StopwatchViewModelInput, StopwatchViewModelOutput {
     var laps: BehaviorRelay<[Lap]>
     var mainTimerText: Observable<String>
     var lapTimerText: Observable<String>
-    
-    init() {
-        timerStatus = timerManager.timerStatus
-        laps = timerManager.laps
-        mainTimerText = timerManager.countingMainTimes.map { $0.toCountingTime() }
-        lapTimerText = timerManager.countingLapTimes.map { $0.toCountingTime() }
-    }
-    
+
 }

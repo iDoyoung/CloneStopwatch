@@ -63,12 +63,6 @@ class StopwatchViewController: UIViewController {
         viewModel?.fetchStopwatchTimer()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        viewModel?.saveStopwatchTimer()
-    }
-    
     //MARK: - Setup UI
     private func setupUIComponents() {
         view.addSubview(timeLabel)
