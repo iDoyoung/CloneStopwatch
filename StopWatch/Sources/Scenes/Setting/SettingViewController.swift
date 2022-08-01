@@ -12,6 +12,13 @@ final class SettingViewController: UIViewController {
     var viewModel: SettingViewModelInput?
     private let userInterfaceStyle = UserDefaults.standard.string(forKey: "UserInterfaceStyle")
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Eazel User"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var logoutButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("로그아웃", for: .normal)
@@ -68,6 +75,7 @@ final class SettingViewController: UIViewController {
     //AMRK: - Setup UI
     private func setupUIComponents() {
         view.addSubview(logoutButton)
+        view.addSubview(titleLabel)
         view.addSubview(interfaceStackView)
         setupLayoutConstraint()
     }
@@ -76,6 +84,8 @@ final class SettingViewController: UIViewController {
         NSLayoutConstraint.activate([
             logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: interfaceStackView.topAnchor, constant: -40),
             interfaceStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             interfaceStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             interfaceStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)

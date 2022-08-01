@@ -33,7 +33,7 @@ final class ControlButton: UIButton {
         layer.path = path.cgPath
         layer.fillColor = UIColor.clear.cgColor
         layer.lineWidth = 2
-        layer.strokeColor = UIColor.systemBackground.cgColor
+        layer.strokeColor = UIColor.black.cgColor
         return layer
     }()
     
