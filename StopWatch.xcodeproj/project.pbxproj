@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F02BCE22896B3EE001D44D0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02BCE12896B3EE001D44D0 /* LoginViewModel.swift */; };
+		7F02BCE62896BB28001D44D0 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02BCE52896BB28001D44D0 /* LoginViewControllerTests.swift */; };
+		7F02BCE82896BB36001D44D0 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02BCE72896BB36001D44D0 /* LoginViewModelTests.swift */; };
 		7F0C0C1E2893CB85008A1577 /* Double+ToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C1D2893CB85008A1577 /* Double+ToTime.swift */; };
 		7F0C0C202893E7C8008A1577 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0C1F2893E7C8008A1577 /* Lap.swift */; };
 		7F0C0C4B289570D6008A1577 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0C0C4A289570D6008A1577 /* FirebaseAuth */; };
@@ -59,6 +62,9 @@
 		15492F048313EA3E3A62500E /* Pods-StopWatch-StopWatchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StopWatch-StopWatchUITests.debug.xcconfig"; path = "Target Support Files/Pods-StopWatch-StopWatchUITests/Pods-StopWatch-StopWatchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E0543B0E2A161E758EDD092 /* Pods-StopWatch-StopWatchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StopWatch-StopWatchUITests.release.xcconfig"; path = "Target Support Files/Pods-StopWatch-StopWatchUITests/Pods-StopWatch-StopWatchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7B50495E1D5F8E3E87B3A8E3 /* Pods_StopWatchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StopWatchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F02BCE12896B3EE001D44D0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		7F02BCE52896BB28001D44D0 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		7F02BCE72896BB36001D44D0 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		7F0C0C1D2893CB85008A1577 /* Double+ToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ToTime.swift"; sourceTree = "<group>"; };
 		7F0C0C1F2893E7C8008A1577 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		7F0C0C4C2895D373008A1577 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 		7FE9B5F6288FB0A3000C3CBC /* StopWatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				7F02BCE52896BB28001D44D0 /* LoginViewControllerTests.swift */,
+				7F02BCE72896BB36001D44D0 /* LoginViewModelTests.swift */,
 				7F4BD6742893A52E0036712E /* StopwatchViewControllerTests.swift */,
 				7F4BD67228915A400036712E /* StopwatchViewModelTests.swift */,
 			);
@@ -217,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				7FE9B610288FB395000C3CBC /* LoginViewController.swift */,
+				7F02BCE12896B3EE001D44D0 /* LoginViewModel.swift */,
 				7FE9B61F288FC03B000C3CBC /* LoginRouter.swift */,
 			);
 			path = Login;
@@ -569,6 +578,7 @@
 				7F0C0C552896019F008A1577 /* SocialLoginService.swift in Sources */,
 				7FE9B613288FB3AC000C3CBC /* StopwatchViewController.swift in Sources */,
 				7FE6ABA8289648F000598E53 /* StopwatchFirestore.swift in Sources */,
+				7F02BCE22896B3EE001D44D0 /* LoginViewModel.swift in Sources */,
 				7F0C0C1E2893CB85008A1577 /* Double+ToTime.swift in Sources */,
 				7F4BD66D2890245E0036712E /* ControlButton.swift in Sources */,
 				7FE9B620288FC03B000C3CBC /* LoginRouter.swift in Sources */,
@@ -582,6 +592,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F02BCE82896BB36001D44D0 /* LoginViewModelTests.swift in Sources */,
+				7F02BCE62896BB28001D44D0 /* LoginViewControllerTests.swift in Sources */,
 				7F4BD6752893A52E0036712E /* StopwatchViewControllerTests.swift in Sources */,
 				7F4BD67328915A400036712E /* StopwatchViewModelTests.swift in Sources */,
 			);

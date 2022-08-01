@@ -11,17 +11,24 @@ import FirebaseAuth
 import GoogleSignIn
 
 protocol SocialLoginProtocol {
-    
-    
+    func autoLogin(completion: @escaping () -> Void)
+    func googleLogin(source: UIViewController, completion: @escaping () -> Void)
+    func signOut(completion: @escaping () -> Void)
 }
 
-final class SocialLoginService {
+final class SocialLoginService: SocialLoginProtocol {
+        
+    func autoLogin(completion: @escaping () -> Void) {
+        if Auth.auth().currentUser != nil{
+            completion()
+        }
+    }
     
     func googleLogin(source: UIViewController, completion: @escaping () -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         let config = GIDConfiguration(clientID: clientID)
         
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: source) { [unowned self] user, error in
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: source) { user, error in
             if let error = error {
                 #if DEBUG
                 print("Error: \(error.localizedDescription), To do handler error")
@@ -47,6 +54,15 @@ final class SocialLoginService {
                     completion()
                 }
             }
+        }
+    }
+    
+    func signOut(completion: @escaping () -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion()
+        } catch {
+            fatalError()
         }
     }
     

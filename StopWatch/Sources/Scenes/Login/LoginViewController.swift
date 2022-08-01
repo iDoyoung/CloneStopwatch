@@ -11,6 +11,7 @@ import RxCocoa
 
 final class LoginViewController: UIViewController {
 
+    var viewModel: LoginViewModelInput?
     var router: LoginRouterLogic?
     private var disposeBag = DisposeBag()
     
@@ -51,10 +52,19 @@ final class LoginViewController: UIViewController {
         setupUIComponents()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel?.autoLogin { [weak self] in
+            self?.router?.showLoginSuccess()
+        }
+    }
+    
     private func setupViewController() {
         let viewController = self
+        let viewModel = LoginViewModel()
         let router = LoginRouter()
         router.viewController = viewController
+        viewController.viewModel = viewModel
         viewController.router = router
     }
     
@@ -78,7 +88,7 @@ final class LoginViewController: UIViewController {
         loginButton.rx.tap
             .bind { [weak self] in
                 guard let self = self else { return }
-                SocialLoginService().googleLogin(source: self ) {
+                self.viewModel?.loginToGoogle(source: self) {
                     self.router?.showLoginSuccess()
                 }
             }
