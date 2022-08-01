@@ -8,6 +8,7 @@
 import Foundation
 
 struct AppDependency {
+    
     let loginService: SocialLoginProtocol
     let timerManager: TimerManager
     let stopwatchFirestore: StopwatchFirestoreProtocol
@@ -30,6 +31,5 @@ struct AppDependency {
         
         return AppDependency(loginService: loginService, timerManager: timerManager, stopwatchFirestore: stopwatchFirestore, loginViewController: loginViewController)
     }
-    
     
 }

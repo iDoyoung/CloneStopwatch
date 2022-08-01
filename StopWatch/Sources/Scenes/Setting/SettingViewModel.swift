@@ -34,6 +34,7 @@ final class SettingViewModel: SettingViewModelInput {
             guard let user = UserDefaults.standard.string(forKey: "userID") else { return }
             guard let timer = self?.timerManager.getCurrentTimerData(by: user) else { return }
             self?.firestore.saveStopwatchData(timer: timer)
+            UserDefaults.standard.removeObject(forKey: "userID")
             completion()
         }
     }
