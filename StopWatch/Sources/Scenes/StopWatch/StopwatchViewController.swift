@@ -17,8 +17,8 @@ class StopwatchViewController: UIViewController {
     
     private let timeLabel: UILabel = {
         let label = UILabel()
-        label.text = "00:00.00"
         label.textAlignment = .center
+        label.sizeToFit()
         label.font = .monospacedDigitSystemFont(ofSize: 90, weight: .thin)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -28,6 +28,7 @@ class StopwatchViewController: UIViewController {
         let button = ControlButton(type: .system)
         button.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
         button.tintColor = .systemGray
+        button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -41,8 +42,9 @@ class StopwatchViewController: UIViewController {
     }()
     
     private let lapTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = .clear
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
         tableView.register(LapTableViewCell.self, forCellReuseIdentifier: LapTableViewCell.resueIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -81,11 +83,11 @@ class StopwatchViewController: UIViewController {
             leftButton.heightAnchor.constraint(equalToConstant: 84),
             leftButton.widthAnchor.constraint(equalToConstant: 84),
             leftButton.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 2),
-            leftButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            leftButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
             rightButton.heightAnchor.constraint(equalToConstant: 84),
             rightButton.widthAnchor.constraint(equalToConstant: 84),
             rightButton.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 2),
-            rightButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            rightButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
             lapTableView.topAnchor.constraint(equalTo: leftButton.bottomAnchor, constant: 16),
             lapTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             lapTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -182,7 +184,6 @@ class StopwatchViewController: UIViewController {
     //MARK: - Control Action
     @objc
     func rightButtonAction(_ sender: ControlButton) {
-        print(sender.timerStatus)
         switch sender.timerStatus {
         case .initialized:
             startTimer()

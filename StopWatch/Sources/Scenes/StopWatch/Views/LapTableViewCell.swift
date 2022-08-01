@@ -46,9 +46,9 @@ class LapTableViewCell: UITableViewCell {
     
     private func setUpLayoutConstraint() {
         NSLayoutConstraint.activate([
-            lapLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            lapLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 14),
             lapLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -14),
             timeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }

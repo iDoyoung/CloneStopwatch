@@ -155,6 +155,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		7F1B9E272897FB4700C26F5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F4BD66C2890245E0036712E /* ControlButton.swift */,
+				7F4BD66E2890E8910036712E /* LapTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7FE9B5D4288FB0A2000C3CBC = {
 			isa = PBXGroup;
 			children = (
@@ -242,8 +251,7 @@
 		7FE9B617288FB3CD000C3CBC /* StopWatch */ = {
 			isa = PBXGroup;
 			children = (
-				7F4BD66C2890245E0036712E /* ControlButton.swift */,
-				7F4BD66E2890E8910036712E /* LapTableViewCell.swift */,
+				7F1B9E272897FB4700C26F5E /* Views */,
 				7FE9B612288FB3AC000C3CBC /* StopwatchViewController.swift */,
 				7F4BD6702891522F0036712E /* StopwatchViewModel.swift */,
 			);
