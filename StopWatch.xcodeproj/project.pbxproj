@@ -72,6 +72,7 @@
 		7F0C0C1F2893E7C8008A1577 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		7F0C0C4C2895D373008A1577 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F0C0C542896019F008A1577 /* SocialLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginService.swift; sourceTree = "<group>"; };
+		7F1B120C28980A2F00618404 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7F1B9E252897DDF000C26F5E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		7F4BD66C2890245E0036712E /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		7F4BD66E2890E8910036712E /* LapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTableViewCell.swift; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 				7FE9B614288FB3B1000C3CBC /* Sources */,
 				7FE9B61B288FB45F000C3CBC /* Supportings */,
 				7FE9B5E9288FB0A3000C3CBC /* Assets.xcassets */,
+				7F1B120C28980A2F00618404 /* README.md */,
 			);
 			path = StopWatch;
 			sourceTree = "<group>";
